@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Bookify</string>
+    <string name="home_label">Home</string>
+    <string name="see_all_label">See all</string>
+    <string name="authors_label">Authors</string>
+    <string name="popular_label">Popular</string>
+    <string name="welcome_back_label">Welcome Back</string>
+    <string name="sign_to_ur_acc_label">Sign to your account</string>
+    <string name="email_label">Email</string>
+    <string name="ur_email_label">Your email</string>
+    <string name="password_label">Password</string>
+    <string name="ur_password_label">Your password</string>
+    <string name="forgot_password_label">Forgot Password?</string>
+    <string name="login_label">Login</string>
+    <string name="dont_have_account_label">"Don't have an account? "</string>
+    <string name="signup_label">Sign Up</string>
+    <string name="or_with_label">Or with</string>
+    <string name="signin_google_label">Sign in with Google</string>
+    <string name="signin_facebook_label">Sign in with Facebook</string>
+    <string name="signup_subtitle">Create account and find your favorite books</string>
+    <string name="get_started_label">Get Started</string>
+    <string name="congrats_label">Congratulation!</string>
+    <string name="get_started_subtitle">Your account is complete, please enjoy the best books from us.</string>
+    <string name="name_label">Name</string>
+    <string name="name_hint_label">Your name</string>
+    <string name="confirm_password_label">Confirm your password</string>
+    <string name="password_requirement_1">Minimum 8 characters</string>
+    <string name="password_requirement_2">At least 1 number (1–9)</string>
+    <string name="password_requirement_3">At least lowercase or uppercase letters</string>
+    <string name="register_label">Register</string>
+    <string name="have_account_signin_label">"Have an account? "</string>
+    <string name="signin_label"> Sign in</string>
+    <string name="register_agreement_1">By clicking Register, you agree to our </string>
+    <string name="register_agreement_2">Terms and Data Policy.</string>
+    <string name="onboarding_title_1">Now reading books will be easier</string>
+    <string name="onboarding_subtitle_1"> Discover new worlds, join a vibrant reading community. Start your reading adventure effortlessly with us.</string>
+    <string name="onboarding_title_2">Listen to Your Favorite Stories</string>
+    <string name="onboarding_subtitle_2">Enjoy hands-free reading with our extensive collection of audiobooks. Perfect for multitasking and on-the-go listening.</string>
+    <string name="onboarding_title_3">Start Your Adventure</string>
+    <string name="onboarding_subtitle_3">"Ready to embark on a quest for inspiration and knowledge? Your adventure begins now. Let's go!"</string>
+    <string name="title_activity_maps">MapsActivity</string>
+
+
+</resources>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "26157981772",
+    "project_id": "homelibrary-ccca5",
+    "storage_bucket": "homelibrary-ccca5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:26157981772:android:9851020cbfe04335b954e9",
+        "android_client_info": {
+          "package_name": "com.example.homelibrary"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG0mC6aKTILo_6mO-Ww3yJjRKSLwH9TSc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,310 @@
+[
+  {
+    "isbn": "978-0-8129-9550-0",
+    "title": "A Little Life",
+    "description": "A Little Life follows four college friends in New York City as they navigate their lives and the complexities of adulthood, with a deep focus on the traumas and struggles of one of the characters, Jude St. Francis.",
+    "rating": 4.8,
+    "coverUrl": "gs://homelibrary-ccca5.appspot.com/A Little Life by Hanya Yanagihara.jfif",
+    "categories": ["Fiction", "Literary", "Drama", "LGBTQ+ Fiction", "Coming-of-Age"],
+    "publicationDate": "2015-03-10",
+    "publisher": "Doubleday",
+    "language": "English",
+    "pageCount": 736,
+    "reviews": [
+      {
+        "reviewer": "Alice Johnson",
+        "review": "A heartbreaking masterpiece that stays with you long after you finish it.",
+        "rating": 5
+      },
+      {
+        "reviewer": "Michael Lee",
+        "review": "Intense and emotional, but not for the faint-hearted.",
+        "rating": 4.5
+      }
+    ],
+    "reviewCount": 2000,
+    "author": {
+      "id": "author-001",
+      "name": "Hanya Yanagihara",
+      "bio": "Hanya Yanagihara is an American novelist, editor, and public speaker, known for her bestselling novel 'A Little Life' which was shortlisted for the Booker Prize.",
+      "photoUrl": "gs://homelibrary-ccca5.appspot.com/hanya_yanagihara.jpg",
+      "profession": "Novelist"
+    },
+    "availableFormats": ["Ebook", "Audiobook"],
+    "ebook": {
+      "fileUrl": "https://example.com/a_little_life.epub",
+      "drmProtected": true,
+      "fontSizeOptions": [12, 14, 16, 18, 20]
+    },
+    "audiobook": {
+      "audioUrl": "https://example.com/a_little_life.mp3",
+      "drmProtected": true,
+      "narrator": "Robert Petkoff",
+      "listeningTime": "24 hours and 11 minutes",
+      "playbackSpeedOptions": [0.75, 1.0, 1.25, 1.5, 2.0]
+    }
+  },
+  {
+    "isbn": "978-1-5011-6282-0",
+    "title": "Call Me by Your Name",
+    "description": "Set in 1980s Italy, 'Call Me by Your Name' tells the story of a passionate summer romance between a 17-year-old student and his father's research assistant, exploring themes of desire, identity, and heartbreak.",
+    "rating": 4.7,
+    "coverUrl": "https://example.com/call_me_by_your_name.jpg",
+    "categories": ["Fiction", "Literary", "Romance", "Coming-of-Age", "LGBTQ+ Fiction"],
+    "publicationDate": "2007-01-01",
+    "publisher": "Call Me by Your Name Publishing",
+    "language": "English",
+    "pageCount": 256,
+    "reviews": [
+      {
+        "reviewer": "Emily Carter",
+        "review": "A beautifully written exploration of first love and longing.",
+        "rating": 5
+      },
+      {
+        "reviewer": "David Smith",
+        "review": "A poignant story that captures the essence of youth and desire.",
+        "rating": 4.5
+      }
+    ],
+    "reviewCount": 1500,
+    "author": {
+      "id": "author-002",
+      "name": "André Aciman",
+      "bio": "André Aciman is an American author and essayist, best known for his novel 'Call Me by Your Name', which was adapted into an Academy Award-winning film.",
+      "photoUrl": "https://example.com/andre_aciman.jpg",
+      "profession": "Author"
+    },
+    "availableFormats": ["Ebook", "Audiobook"],
+    "ebook": {
+      "fileUrl": "https://example.com/call_me_by_your_name.epub",
+      "drmProtected": true,
+      "fontSizeOptions": [12, 14, 16, 18, 20]
+    },
+    "audiobook": {
+      "audioUrl": "https://example.com/call_me_by_your_name.mp3",
+      "drmProtected": true,
+      "narrator": "Armie Hammer",
+      "listeningTime": "10 hours and 15 minutes",
+      "playbackSpeedOptions": [0.75, 1.0, 1.25, 1.5, 2.0]
+    }
+  },
+  {
+    "isbn": "978-1-5011-6005-4",
+    "title": "Find Me",
+    "description": "In 'Find Me', the sequel to 'Call Me by Your Name', André Aciman continues the story of Elio and Oliver, exploring themes of love, longing, and the passage of time as their lives intertwine once more.",
+    "rating": 4.5,
+    "coverUrl": "https://example.com/find_me.jpg",
+    "categories": ["Fiction", "Literary", "Romance", "LGBTQ+ Fiction", "Coming-of-Age"],
+    "publicationDate": "2019-10-29",
+    "publisher": "Farrar, Straus and Giroux",
+    "language": "English",
+    "pageCount": 256,
+    "reviews": [
+      {
+        "reviewer": "Sophia Brown",
+        "review": "A poignant and tender exploration of love and nostalgia.",
+        "rating": 5
+      },
+      {
+        "reviewer": "Michael Lee",
+        "review": "While it doesn't quite capture the magic of the first book, it's still a beautiful read.",
+        "rating": 4
+      }
+    ],
+    "reviewCount": 1000,
+    "author": {
+      "id": "author-002",
+      "name": "André Aciman",
+      "bio": "André Aciman is an American author and essayist, best known for his novels exploring themes of love and identity, including 'Call Me by Your Name' and its sequel 'Find Me'.",
+      "photoUrl": "https://example.com/andre_aciman.jpg",
+      "profession": "Author"
+    },
+    "availableFormats": ["Ebook", "Audiobook"],
+    "ebook": {
+      "fileUrl": "https://example.com/find_me.epub",
+      "drmProtected": true,
+      "fontSizeOptions": [12, 14, 16, 18, 20]
+    },
+    "audiobook": {
+      "audioUrl": "https://example.com/find_me.mp3",
+      "drmProtected": true,
+      "narrator": "Armie Hammer",
+      "listeningTime": "9 hours and 50 minutes",
+      "playbackSpeedOptions": [0.75, 1.0, 1.25, 1.5, 2.0]
+    }
+  },
+  {
+    "isbn": "978-1-4789-6032-8",
+    "title": "The Seven Husbands of Evelyn Hugo",
+    "description": "In 'The Seven Husbands of Evelyn Hugo', a reclusive Hollywood icon, Evelyn Hugo, tells her life story to a young journalist, shedding light on her glamorous yet tumultuous life, her seven marriages, and her ultimate quest for love and identity.",
+    "rating": 4.6,
+    "coverUrl": "https://example.com/seven_husbands_of_evelyn_hugo.jpg",
+    "categories": ["Fiction", "Literary", "Historical Fiction", "Romance"],
+    "publicationDate": "2017-06-13",
+    "publisher": "Atria Books",
+    "language": "English",
+    "pageCount": 388,
+    "reviews": [
+      {
+        "reviewer": "Lisa Green",
+        "review": "A captivating tale of love, loss, and the price of fame.",
+        "rating": 5
+      },
+      {
+        "reviewer": "John Smith",
+        "review": "An intriguing exploration of the complexities of relationships.",
+        "rating": 4.5
+      }
+    ],
+    "reviewCount": 12000,
+    "author": {
+      "id": "author-003",
+      "name": "Taylor Jenkins Reid",
+      "bio": "Taylor Jenkins Reid is an American author known for her contemporary romance novels, including 'The Seven Husbands of Evelyn Hugo' and 'Daisy Jones & The Six'.",
+      "photoUrl": "https://example.com/taylor_jenkins_reid.jpg",
+      "profession": "Author"
+    },
+    "availableFormats": ["Ebook", "Audiobook"],
+    "ebook": {
+      "fileUrl": "https://example.com/seven_husbands_of_evelyn_hugo.epub",
+      "drmProtected": true,
+      "fontSizeOptions": [12, 14, 16, 18, 20]
+   
+[
+  {
+    "isbn": "978-0-8129-9550-0",
+    "title": "A Little Life",
+    "description": "A Little Life follows four college friends in New York City as they navigate their lives and the complexities of adulthood, with a deep focus on the traumas and struggles of one of the characters, Jude St. Francis.",
+    "rating": 4.8,
+    "coverUrl": "gs://homelibrary-ccca5.appspot.com/A Little Life by Hanya Yanagihara.jfif",
+    "categories": ["Fiction", "Literary", "Drama", "LGBTQ+ Fiction", "Coming-of-Age"],
+    "publicationDate": "2015-03-10",
+    "publisher": "Doubleday",
+    "language": "English",
+    "pageCount": 736,
+    "reviews": [
+      {
+        "reviewer": "Alice Johnson",
+        "review": "A heartbreaking masterpiece that stays with you long after you finish it.",
+        "rating": 5
+      },
+      {
+        "reviewer": "Michael Lee",
+        "review": "Intense and emotional, but not for the faint-hearted.",
+        "rating": 4.5
+      }
+    ],
+    "reviewCount": 2000,
+    "author": {
+      "id": "author-001",
+      "name": "Hanya Yanagihara",
+      "bio": "Hanya Yanagihara is an American novelist, editor, and public speaker, known for her bestselling novel 'A Little Life' which was shortlisted for the Booker Prize.",
+      "photoUrl": "gs://homelibrary-ccca5.appspot.com/hanya_yanagihara.jpg",
+      "profession": "Novelist"
+    },
+    "availableFormats": ["Ebook", "Audiobook"],
+    "ebook": {
+      "fileUrl": "https://example.com/a_little_life.epub",
+      "drmProtected": true,
+      "fontSizeOptions": [12, 14, 16, 18, 20]
+    },
+    "audiobook": {
+      "audioUrl": "https://example.com/a_little_life.mp3",
+      "drmProtected": true,
+      "narrator": "Robert Petkoff",
+      "listeningTime": "24 hours and 11 minutes",
+      "playbackSpeedOptions": [0.75, 1.0, 1.25, 1.5, 2.0]
+    }
+  },
+  {
+    "isbn": "978-1-5011-6282-0",
+    "title": "Call Me by Your Name",
+    "description": "Set in 1980s Italy, 'Call Me by Your Name' tells the story of a passionate summer romance between a 17-year-old student and his father's research assistant, exploring themes of desire, identity, and heartbreak.",
+    "rating": 4.7,
+    "coverUrl": "https://example.com/call_me_by_your_name.jpg",
+    "categories": ["Fiction", "Literary", "Romance", "Coming-of-Age", "LGBTQ+ Fiction"],
+    "publicationDate": "2007-01-01",
+    "publisher": "Call Me by Your Name Publishing",
+    "language": "English",
+    "pageCount": 256,
+    "reviews": [
+      {
+        "reviewer": "Emily Carter",
+        "review": "A beautifully written exploration of first love and longing.",
+        "rating": 5
+      },
+      {
+        "reviewer": "David Smith",
+        "review": "A poignant story that captures the essence of youth and desire.",
+        "rating": 4.5
+      }
+    ],
+    "reviewCount": 1500,
+    "author": {
+      "id": "author-002",
+      "name": "André Aciman",
+      "bio": "André Aciman is an American author and essayist, best known for his novel 'Call Me by Your Name', which was adapted into an Academy Award-winning film.",
+      "photoUrl": "https://example.com/andre_aciman.jpg",
+      "profession": "Author"
+    },
+    "availableFormats": ["Ebook", "Audiobook"],
+    "ebook": {
+      "fileUrl": "https://example.com/call_me_by_your_name.epub",
+      "drmProtected": true,
+      "fontSizeOptions": [12, 14, 16, 18, 20]
+    },
+    "audiobook": {
+      "audioUrl": "https://example.com/call_me_by_your_name.mp3",
+      "drmProtected": true,
+      "narrator": "Armie Hammer",
+      "listeningTime": "10 hours and 15 minutes",
+      "playbackSpeedOptions": [0.75, 1.0, 1.25, 1.5, 2.0]
+    }
+  },
+  {
+    "isbn": "978-1-5011-6005-4",
+    "title": "Find Me",
+    "description": "In 'Find Me', the sequel to 'Call Me by Your Name', André Aciman continues the story of Elio and Oliver, exploring themes of love, longing, and the passage of time as their lives intertwine once more.",
+    "rating": 4.5,
+    "coverUrl": "https://example.com/find_me.jpg",
+    "categories": ["Fiction", "Literary", "Romance", "LGBTQ+ Fiction", "Coming-of-Age"],
+    "publicationDate": "2019-10-29",
+    "publisher": "Farrar, Straus and Giroux",
+    "language": "English",
+    "pageCount": 256,
+    "reviews": [
+      {
+        "reviewer": "Sophia Brown",
+        "review": "A poignant and tender exploration of love and nostalgia.",
+        "rating": 5
+      },
+      {
+        "reviewer": "Michael Lee",
+        "review": "While it doesn't quite capture the magic of the first book, it's still a beautiful read.",
+        "rating": 4
+      }
+    ],
+    "reviewCount": 1000,
+    "author": {
+      "id": "author-002",
+      "name": "André Aciman",
+      "bio": "André Aciman is an American author and essayist, best known for his novels exploring themes of love and identity, including 'Call Me by Your Name' and its sequel 'Find Me'.",
+      "photoUrl": "https://example.com/andre_aciman.jpg",
+      "profession": "Author"
+    },
+    "availableFormats": ["Ebook", "Audiobook"],
+    "ebook": {
+      "fileUrl": "https://example.com/find_me.epub",
+      "drmProtected": true,
+      "fontSizeOptions": [12, 14, 16, 18, 20]
+    },
+    "audiobook": {
+      "audioUrl": "https://example.com/find_me.mp3",
+      "drmProtected": true,
+      "narrator": "Armie Hammer",
+      "listeningTime": "9 hours and 50 minutes",
+      "playbackSpeedOptions": [0.75, 1.0, 1.25, 1.5, 2.0]
+    }
+  },
+  
