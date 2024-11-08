@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.*
 import androidx.compose.ui.unit.dp
-import com.example.homelibrary.domain.model.Author
+import com.example.homelibrary.data.remote.response.Author
 import com.example.homelibrary.domain.model.Book
 import com.example.homelibrary.R
 import com.example.homelibrary.presentation.Dimens.BigPadding

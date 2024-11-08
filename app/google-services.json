@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "26157981772",
+    "firebase_url": "https://homelibrary-ccca5-default-rtdb.firebaseio.com",
     "project_id": "homelibrary-ccca5",
     "storage_bucket": "homelibrary-ccca5.appspot.com"
   },
@@ -12,7 +13,20 @@
           "package_name": "com.example.homelibrary"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "26157981772-a82ek9mk5cbbkmc6qckf6nj5lhu4ngkb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.homelibrary",
+            "certificate_hash": "f8947b5076411897845600bcc0e6d404361710eb"
+          }
+        },
+        {
+          "client_id": "26157981772-l8mam4rct1lksi2rmf6sie56achsm20u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCG0mC6aKTILo_6mO-Ww3yJjRKSLwH9TSc"
@@ -20,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "26157981772-l8mam4rct1lksi2rmf6sie56achsm20u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
