@@ -6,9 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.*
 import androidx.compose.ui.unit.dp
-import com.example.homelibrary.data.remote.response.Author
-import com.example.homelibrary.domain.model.Book
+import com.example.homelibrary.domain.model.MyBook
 import com.example.homelibrary.R
+import com.example.homelibrary.domain.model.MyAuthor
 import com.example.homelibrary.presentation.Dimens.BigPadding
 import com.example.homelibrary.presentation.Dimens.SmallPadding
 import com.example.homelibrary.presentation.common.BookRowSlider
@@ -19,8 +19,8 @@ import com.example.homelibrary.presentation.home_main.components.TopBar
 
 @Composable
 fun HomeScreen(
-    books: List<Book>,
-    authors: List<Author>,
+    books: List<MyBook>,
+    authors: List<MyAuthor>,
     newsCards: List<String>
 ){
     Column (

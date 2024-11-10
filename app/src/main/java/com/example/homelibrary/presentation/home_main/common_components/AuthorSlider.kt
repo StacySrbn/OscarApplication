@@ -6,14 +6,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.example.homelibrary.domain.model.Author
 import com.example.homelibrary.R
+import com.example.homelibrary.domain.model.MyAuthor
 import com.example.homelibrary.presentation.Dimens
 import com.example.homelibrary.presentation.common.HeaderRowSlider
 
 @Composable
 fun AuthorsSlider(
-    authors: List<Author>
+    authors: List<MyAuthor>
 ){
     Column (
         modifier = Modifier

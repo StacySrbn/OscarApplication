@@ -14,13 +14,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.*
 import coil.compose.rememberAsyncImagePainter
-import com.example.homelibrary.domain.model.Author
 import com.example.homelibrary.R
+import com.example.homelibrary.domain.model.MyAuthor
 import com.example.homelibrary.presentation.Dimens
 
 @Composable
 fun AuthorCardViewHolder(
-    author: Author,
+    author: MyAuthor,
     lastItemEndPadding: Dp
 ){
     Column {

@@ -1,22 +1,45 @@
 package com.example.homelibrary.presentation.signup
 
+import android.widget.Toast
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.ViewModel
 import com.example.homelibrary.R
 import com.example.homelibrary.presentation.common.TopSectionBack
+import com.example.homelibrary.presentation.navgraph.Screen
 import com.example.homelibrary.presentation.signup.components.InputFields
+import com.example.homelibrary.presentation.signup.components.PasswordValidity
 import com.example.homelibrary.presentation.signup.components.SignUpScreenButtons
 import com.example.homelibrary.ui.theme.HomeLibraryTheme
 
 @Composable
-fun SignUpScreen(){
+fun SignUpScreen(
+    state: SignUpState,
+    navigate: (Screen) -> Unit,
+    onSignUp: (navigate: (Screen) -> Unit) -> Unit,
+    onErrorMessageShown: () -> Unit,
+    onNameChange: (String) ->  Unit,
+    onEmailChange: (String) -> Unit,
+    onPasswordChange: (String) -> Unit,
+    onConfirmPasswordChange: (String) -> Unit,
+    validatePassword: (String) -> PasswordValidity
+){
+    val context = LocalContext.current
 
-    val nameState = remember { mutableStateOf("") }
-    val emailState = remember { mutableStateOf("") }
-    val passwordState = remember { mutableStateOf("") }
-    val passwordConfirmState = remember { mutableStateOf("") }
+    LaunchedEffect(state.isSignUpSuccessful, state.errorMessage) {
+        if (state.isSignUpSuccessful){
+            Toast.makeText(context, "Registration successful.", Toast.LENGTH_LONG).show()
+        } else {
+            state.errorMessage?.let {
+                Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+                onErrorMessageShown()
+            }
+        }
+    }
 
     val title = stringResource(id = R.string.signup_label)
     val subTitle = stringResource(id = R.string.signup_subtitle)
@@ -31,26 +54,25 @@ fun SignUpScreen(){
         }
         item {
             InputFields(
-                nameState = nameState,
-                emailState = emailState,
-                passwordState = passwordState,
-                passwordConfirmState = passwordConfirmState,
-                onNameChanged = { nameState.value = it },
-                onEmailChange = { emailState.value = it },
-                onPasswordChange = { passwordState.value = it },
-                onConfirmPasswordChange = { passwordConfirmState.value = it }
+                nameState = state.name,
+                emailState = state.email,
+                passwordState = state.password,
+                passwordConfirmState = state.confirmPassword,
+                onNameChanged = onNameChange,
+                onEmailChange = onEmailChange,
+                onPasswordChange = onPasswordChange,
+                onConfirmPasswordChange = onConfirmPasswordChange,
+                validatePassword = validatePassword
             )
         }
         item {
-            SignUpScreenButtons()
-        }
-    }
-}
+            SignUpScreenButtons(
+                onRegisterClick = {
+                    onSignUp(navigate)
+                },
+                navigate = navigate
 
-@Preview(showBackground = true)
-@Composable
-fun SignUpScreenPreview(){
-    HomeLibraryTheme {
-        SignUpScreen()
+            )
+        }
     }
 }

@@ -1,27 +1,30 @@
 package com.example.homelibrary.presentation.navgraph
 
-import android.app.Activity.RESULT_OK
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.runtime.Composable
+import android.widget.Toast
+import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
+import com.example.homelibrary.HelperScreen
 import com.example.homelibrary.presentation.onboarding.OnBoardingEvent
 import com.example.homelibrary.presentation.onboarding.OnBoardingScreen
 import com.example.homelibrary.presentation.onboarding.OnBoardingViewModel
 import com.example.homelibrary.presentation.signin.SignInScreen
 import com.example.homelibrary.presentation.signin.SignInViewModel
 import com.example.homelibrary.presentation.signup.SignUpScreen
+import com.example.homelibrary.presentation.signup.SignUpViewModel
 
 @Composable
-fun NavGraph(
+fun AppNavigation(
     startDestination: Screen,
-    navController: NavHostController
+    navController: NavHostController,
+    onGoogleSignInClick: () -> Unit,
+    signInViewModel: SignInViewModel
 ){
     val onBoardingViewModel: OnBoardingViewModel = hiltViewModel()
+    val context = LocalContext.current
 
     NavHost(
         startDestination = startDestination.route,
@@ -41,12 +44,68 @@ fun NavGraph(
         }
         composable(Screen.SignInScreen.route){
 
-            
+            val googleState by signInViewModel.stateGoogle.collectAsStateWithLifecycle()
+
+            LaunchedEffect(key1 = googleState.isGoogleSignInSuccessful){
+                if(googleState.isGoogleSignInSuccessful) {
+                    Toast.makeText(
+                        context,
+                        "Sign in successful",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    navController.navigate(Screen.HelperScreen.route)
+                    signInViewModel.resetGoogleState()
+                }
+            }
+
+            val viewModel = hiltViewModel<SignInViewModel>()
+            val state by viewModel.state.collectAsState()
+
+            SignInScreen(
+                state = state,
+                googleSignInState = googleState,
+                onGoogleSignInClick = onGoogleSignInClick,
+                navigate = { screen -> navController.navigate(screen.route) },
+                onErrorMessageShown = {viewModel.onErrorMessageShown()},
+                onEmailChange = { email -> viewModel.onEmailChange(email) },
+                onPasswordChange = { password -> viewModel.onPasswordChange(password) },
+                onSignIn = { email, password, navigate ->
+                    viewModel.signIn(email, password) { screen ->
+                        navigate(screen)
+                    }
+                }
+            )
 
         }
         composable(Screen.SignUpScreen.route){
-            SignUpScreen()
+            val viewModel = hiltViewModel<SignUpViewModel>()
+            val state by viewModel.state.collectAsState()
+            SignUpScreen(
+                state = state,
+                onErrorMessageShown = {viewModel.onErrorMessageShown()},
+                navigate = { screen -> navController.navigate(screen.route) },
+                onSignUp = { navigate->
+                    viewModel.signUp{screen ->
+                        navigate(screen)
+                    }
+                },
+                onNameChange = { name -> viewModel.onNameChange(name) },
+                onEmailChange = { email -> viewModel.onEmailChange(email) },
+                onPasswordChange = { password -> viewModel.onPasswordChange(password) },
+                onConfirmPasswordChange = { confirmPassword -> viewModel.onConfirmPasswordChange(confirmPassword) },
+                validatePassword = { password -> viewModel.validatePassword(password) }            )
         }
+        composable(Screen.HelperScreen.route) {
+            HelperScreen(
+                onSignOutComplete = {
+                    navController.navigate(Screen.SignInScreen.route){
+                        popUpTo(Screen.HelperScreen.route) { inclusive = true }
+                    }
+
+                }
+            )
+        }
+
 
     }
 }
