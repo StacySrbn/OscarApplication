@@ -1,4 +1,4 @@
-package com.example.homelibrary.presentation.signin
+package com.example.homelibrary.presentation.signin.google
 
 data class SignInResult(
     val data: UserData?,

@@ -92,7 +92,7 @@ class SignUpViewModel @Inject constructor(
                 _state.update { it.copy(isSignUpSuccessful = false, errorMessage = "Email is already in use.") }
             }
             if (_state.value.isSignUpSuccessful) {
-                navigate(Screen.HelperScreen)
+                navigate(Screen.CoreScreen)
                 delay(2000)
                 resetState()
             }

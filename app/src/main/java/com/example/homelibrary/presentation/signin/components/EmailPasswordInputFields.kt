@@ -7,19 +7,18 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.*
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
 import com.example.homelibrary.R
-import com.example.homelibrary.presentation.Dimens.MediumPadding
-import com.example.homelibrary.presentation.Dimens.SmallPadding
+import com.example.homelibrary.util.Dimens.MediumPadding
+import com.example.homelibrary.util.Dimens.SmallPadding
 import com.example.homelibrary.presentation.common.InputField
 import com.example.homelibrary.presentation.common.PasswordField
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EmailPasswordInputFields(
-    emailState: MutableState<String>,
-    passwordState: MutableState<String>,
+    emailState: String,
+    passwordState: String,
     onEmailChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit
 ) {
@@ -56,18 +55,4 @@ fun EmailPasswordInputFields(
         )
     }
 
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewEmailPasswordInputFields() {
-    val emailState = remember { mutableStateOf("") }
-    val passwordState = remember { mutableStateOf("") }
-
-    EmailPasswordInputFields(
-        emailState = emailState,
-        passwordState = passwordState,
-        onEmailChange = { emailState.value = it },
-        onPasswordChange = { passwordState.value = it }
-    )
 }

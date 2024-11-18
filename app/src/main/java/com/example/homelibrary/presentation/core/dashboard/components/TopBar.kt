@@ -1,4 +1,4 @@
-package com.example.homelibrary.presentation.home_main.components
+package com.example.homelibrary.presentation.core.dashboard.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -16,8 +16,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.homelibrary.R
-import com.example.homelibrary.presentation.Dimens.ExtraSmallPadding
-import com.example.homelibrary.presentation.Dimens.SmallPadding
+import com.example.homelibrary.util.Dimens.ExtraSmallPadding
+import com.example.homelibrary.util.Dimens.SmallPadding
 
 @Composable
 fun TopBar(){

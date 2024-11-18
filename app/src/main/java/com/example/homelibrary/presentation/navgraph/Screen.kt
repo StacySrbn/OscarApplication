@@ -3,10 +3,16 @@ package com.example.homelibrary.presentation.navgraph
 sealed class Screen(
     val route: String
 ){
-    object OnBoardingScreen : Screen(route = "onboarding")
-    object SignUpScreen : Screen(route = "signup")
-    object SignInScreen : Screen(route = "sign_in")
-    object HomeScreen : Screen(route = "home")
+    object OnBoardingScreen: Screen("onboarding")
+    object SignUpScreen: Screen("signup")
+    object SignInScreen: Screen("signin")
+    object CoreScreen: Screen("core")
+    object DashboardScreen : Screen("dashboard")
+    object CategoryScreen: Screen("category")
+    object FavoriteScreen: Screen("favorite")
+    object ProfileScreen: Screen("profile")
+    object HelperScreen: Screen("helper")
+    object DetailsScreen: Screen("details")
 
     fun withArgs(vararg args: String): String {
         return buildString {

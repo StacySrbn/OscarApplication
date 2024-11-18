@@ -16,17 +16,20 @@ import androidx.compose.ui.text.input.*
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
 import com.example.homelibrary.R
+import com.example.homelibrary.presentation.signup.components.PasswordStrengthIndicator
+import com.example.homelibrary.presentation.signup.components.PasswordValidity
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PasswordField(
-    passwordState: MutableState<String>,
+    passwordState: String,
     onPasswordChange: (String) -> Unit,
     label: String,
-    showRequirements: Boolean = false
+    showRequirements: Boolean = false,
+    validatePassword: (String) -> PasswordValidity = { PasswordValidity() }
 ){
     var passwordVisible by remember { mutableStateOf(false) }
-    var isFocused by remember { mutableStateOf(false) }
+    var requirementsVisible by remember { mutableStateOf(false) }
 
     Column {
         Text(
@@ -36,8 +39,13 @@ fun PasswordField(
             fontSize = 14.sp
         )
         OutlinedTextField(
-            value = passwordState.value,
-            onValueChange = onPasswordChange,
+            value = passwordState,
+            onValueChange = {
+                onPasswordChange(it)
+                if (showRequirements) {
+                    requirementsVisible = true
+                }
+            },
             label = {
                 Text(
                     text = stringResource(id = R.string.ur_password_label),
@@ -69,16 +77,10 @@ fun PasswordField(
                 focusedBorderColor = colorResource(id = R.color.graphite)
             )
         )
-    }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewPasswordField() {
-    val passwordState = remember { mutableStateOf("") }
-    PasswordField(
-        passwordState = passwordState,
-        onPasswordChange = { passwordState.value = it },
-        label = "Password"
-    )
+        if (showRequirements && requirementsVisible){
+            val isPasswordValid = validatePassword(passwordState)
+            PasswordStrengthIndicator(isPasswordValid)
+        }
+    }
 }

@@ -11,8 +11,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import com.example.homelibrary.R
-import com.example.homelibrary.presentation.Dimens.SelectedIndicatorSize
-import com.example.homelibrary.presentation.Dimens.UnselectedIndicatorSize
+import com.example.homelibrary.util.Dimens.SelectedIndicatorSize
+import com.example.homelibrary.util.Dimens.UnselectedIndicatorSize
 
 @Composable
 fun DotIndicator(

@@ -4,22 +4,23 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.homelibrary.R
-import com.example.homelibrary.presentation.Dimens
+import com.example.homelibrary.util.Dimens
+import com.example.homelibrary.util.Dimens.SmallPadding
 import com.example.homelibrary.presentation.common.InputField
 import com.example.homelibrary.presentation.common.PasswordField
 
 @Composable
 fun InputFields(
-    nameState: MutableState<String>,
-    emailState: MutableState<String>,
-    passwordState: MutableState<String>,
-    passwordConfirmState: MutableState<String>,
+    nameState: String,
+    emailState: String,
+    passwordState: String,
+    passwordConfirmState: String,
     onNameChanged: (String) -> Unit,
     onEmailChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
-    onConfirmPasswordChange: (String) -> Unit
+    onConfirmPasswordChange: (String) -> Unit,
+    validatePassword: (String) -> PasswordValidity
 ) {
     Column(
         modifier = Modifier
@@ -35,7 +36,7 @@ fun InputFields(
             fieldState = nameState,
             onFieldChange = onNameChanged
         )
-        Spacer(modifier = Modifier.height(Dimens.SmallPadding))
+        Spacer(modifier = Modifier.height(SmallPadding))
 
         val emailLabel = stringResource(id = R.string.email_label)
         val emailHint = stringResource(id = R.string.ur_email_label)
@@ -45,15 +46,17 @@ fun InputFields(
             onFieldChange = onEmailChange,
             fieldState = emailState
         )
-        Spacer(modifier = Modifier.height(Dimens.SmallPadding))
+        Spacer(modifier = Modifier.height(SmallPadding))
 
         val labelPassword = stringResource(id = R.string.password_label)
         PasswordField(
             passwordState = passwordState,
             onPasswordChange = onPasswordChange,
-            label = labelPassword
+            label = labelPassword,
+            showRequirements = true,
+            validatePassword = validatePassword
         )
-        Spacer(modifier = Modifier.height(Dimens.SmallPadding))
+        Spacer(modifier = Modifier.height(SmallPadding))
 
         val labelConfirmPassword = stringResource(id = R.string.confirm_password_label)
         PasswordField(
@@ -63,24 +66,4 @@ fun InputFields(
         )
 
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun InputFieldsPreview() {
-    val nameState = remember { mutableStateOf("") }
-    val emailState = remember { mutableStateOf("") }
-    val passwordState = remember { mutableStateOf("") }
-    val passwordConfirmState = remember { mutableStateOf("") }
-
-    InputFields(
-        nameState = nameState,
-        emailState = emailState,
-        passwordState = passwordState,
-        passwordConfirmState = passwordConfirmState,
-        onNameChanged = { nameState.value = it },
-        onEmailChange = { emailState.value = it },
-        onPasswordChange = { passwordState.value = it },
-        onConfirmPasswordChange = { passwordConfirmState.value = it }
-    )
 }

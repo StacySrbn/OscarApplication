@@ -1,4 +1,4 @@
-package com.example.homelibrary.presentation.common
+package com.example.homelibrary.presentation.core.dashboard.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

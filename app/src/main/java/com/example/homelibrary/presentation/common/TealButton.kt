@@ -11,7 +11,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.*
 import com.example.homelibrary.R
-import com.example.homelibrary.presentation.Dimens.MediumPadding
+import com.example.homelibrary.util.Dimens.MediumPadding
 
 @Composable
 fun TealButton(

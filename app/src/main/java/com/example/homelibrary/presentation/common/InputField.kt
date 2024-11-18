@@ -18,7 +18,7 @@ import com.example.homelibrary.R
 fun InputField(
     label: String,
     hint: String,
-    fieldState: MutableState<String>,
+    fieldState: String,
     onFieldChange: (String) -> Unit
 ){
     Column {
@@ -30,7 +30,7 @@ fun InputField(
         )
         Spacer(modifier = Modifier.height(6.dp))
         OutlinedTextField(
-            value = fieldState.value,
+            value = fieldState,
             onValueChange = onFieldChange,
             label = {
                 Text(
@@ -49,16 +49,4 @@ fun InputField(
             )
         )
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewInputField() {
-    val fieldState = remember { mutableStateOf("") }
-    InputField(
-        label = "Email",
-        hint = "Your Email",
-        fieldState = fieldState,
-        onFieldChange = { fieldState.value = it }
-    )
 }

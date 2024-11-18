@@ -14,7 +14,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
 import com.example.homelibrary.R
-import com.example.homelibrary.presentation.Dimens.ExtraSmallPadding
+import com.example.homelibrary.util.Dimens.ExtraSmallPadding
 
 @Composable
 fun SuccessSection(

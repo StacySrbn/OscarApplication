@@ -79,7 +79,7 @@ class SignInViewModel @Inject constructor(
             Log.d("SignInViewModel", "Sign In Successful after catch block ${_state.value.isSignInSuccessful}")
 
             if (_state.value.isSignInSuccessful){
-                navigate(Screen.HelperScreen)
+                navigate(Screen.CoreScreen)
                 delay(2000)
                 resetState()
             }

@@ -13,13 +13,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
 import com.example.homelibrary.R
-import com.example.homelibrary.presentation.Dimens.ExtraSmallPadding
-import com.example.homelibrary.presentation.Dimens.MediumPadding
+import com.example.homelibrary.util.Dimens.ExtraSmallPadding
+import com.example.homelibrary.util.Dimens.MediumPadding
 import com.example.homelibrary.presentation.common.TealButton
+import com.example.homelibrary.presentation.navgraph.Screen
 import com.example.homelibrary.ui.theme.HomeLibraryTheme
 
 @Composable
-fun ButtonsLogin(){
+fun ButtonsLogin(
+    onGoogleSignInClick:() -> Unit,
+    onSignInClick:() -> Unit,
+    navigate: (Screen) -> Unit
+){
     Column (
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Top,
@@ -28,7 +33,7 @@ fun ButtonsLogin(){
         val label = stringResource(id = R.string.login_label)
         TealButton(
             label = label,
-            onClick = {}
+            onClick = onSignInClick
         )
 
         Spacer(modifier = Modifier.height(MediumPadding))
@@ -41,7 +46,9 @@ fun ButtonsLogin(){
         }
 
         Text(
-            modifier = Modifier.clickable {  },
+            modifier = Modifier.clickable {
+                navigate(Screen.SignUpScreen)
+            },
             text = signupText,
             fontSize = 16.sp,
             fontWeight = FontWeight.Medium,
@@ -81,7 +88,7 @@ fun ButtonsLogin(){
         val googleLabel = stringResource(id = R.string.signin_google_label)
         val googleIcon: Painter = painterResource(id = R.drawable.google_ic)
         SignInWithButton(
-            onClick = {},
+            onClick = onGoogleSignInClick,
             icon = googleIcon,
             label = googleLabel
         )
@@ -103,6 +110,10 @@ fun ButtonsLogin(){
 @Composable
 fun ButtonsLoginPreview(){
     HomeLibraryTheme {
-        ButtonsLogin()
+        ButtonsLogin(
+            onGoogleSignInClick = {},
+            navigate = {},
+            onSignInClick = {}
+        )
     }
 }

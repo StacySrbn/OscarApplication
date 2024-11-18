@@ -1,4 +1,4 @@
-package com.example.homelibrary.presentation.signin
+package com.example.homelibrary.presentation.signin.google
 
 import android.content.*
 import com.example.homelibrary.R
@@ -18,13 +18,16 @@ class GoogleAuthUiClient(
 
     suspend fun signIn(): IntentSender? {
         val result = try {
-            oneTapClient.beginSignIn(buildSignInRequest()).await()
+            oneTapClient.beginSignIn(
+                buildSignInRequest()
+            ).await()
         } catch (e: Exception){
             e.printStackTrace()
             if (e is CancellationException) throw e
             null
         }
-        return result?.pendingIntent?.intentSender
+
+       return result?.pendingIntent?.intentSender
     }
 
     suspend fun signInWithIntent(intent: Intent): SignInResult {

@@ -1,11 +1,11 @@
-package com.example.homelibrary.manager
+package com.example.homelibrary.data.manager
 
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
-import com.example.homelibrary.Constants
-import com.example.homelibrary.Constants.USER_SETTINGS
+import com.example.homelibrary.util.Constants
+import com.example.homelibrary.util.Constants.USER_SETTINGS
 import com.example.homelibrary.domain.manager.LocalUserManager
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject

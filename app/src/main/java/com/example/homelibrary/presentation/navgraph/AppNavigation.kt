@@ -6,8 +6,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.*
+import androidx.navigation.navArgument
 import com.example.homelibrary.HelperScreen
+import com.example.homelibrary.presentation.core.CoreScreen
+import com.example.homelibrary.presentation.core.dashboard.DashboardScreen
+import com.example.homelibrary.presentation.details.DetailsScreen
 import com.example.homelibrary.presentation.onboarding.OnBoardingEvent
 import com.example.homelibrary.presentation.onboarding.OnBoardingScreen
 import com.example.homelibrary.presentation.onboarding.OnBoardingViewModel
@@ -53,7 +58,7 @@ fun AppNavigation(
                         "Sign in successful",
                         Toast.LENGTH_LONG
                     ).show()
-                    navController.navigate(Screen.HelperScreen.route)
+                    navController.navigate(Screen.CoreScreen.route)
                     signInViewModel.resetGoogleState()
                 }
             }
@@ -84,7 +89,7 @@ fun AppNavigation(
                 state = state,
                 onErrorMessageShown = {viewModel.onErrorMessageShown()},
                 navigate = { screen -> navController.navigate(screen.route) },
-                onSignUp = { navigate->
+                onSignUp = { navigate ->
                     viewModel.signUp{screen ->
                         navigate(screen)
                     }
@@ -94,6 +99,17 @@ fun AppNavigation(
                 onPasswordChange = { password -> viewModel.onPasswordChange(password) },
                 onConfirmPasswordChange = { confirmPassword -> viewModel.onConfirmPasswordChange(confirmPassword) },
                 validatePassword = { password -> viewModel.validatePassword(password) }            )
+        }
+        composable(Screen.CoreScreen.route) {
+            CoreScreen(navController)
+        }
+        composable(
+            route = Screen.DetailsScreen.withArgs("{movieId}"),
+            arguments = listOf(
+                navArgument(name = "movieId") {type = NavType.IntType}
+            )
+        ) { backStackEntry ->  
+            DetailsScreen(/*backStackEntry*/)
         }
         composable(Screen.HelperScreen.route) {
             HelperScreen(

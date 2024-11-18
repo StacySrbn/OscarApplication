@@ -9,14 +9,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.*
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
 import com.example.homelibrary.R
-import com.example.homelibrary.presentation.Dimens.MediumPadding
+import com.example.homelibrary.util.Dimens.MediumPadding
 import com.example.homelibrary.presentation.common.TealButton
+import com.example.homelibrary.presentation.navgraph.Screen
 
 @Composable
-fun SignUpScreenButtons() {
+fun SignUpScreenButtons(
+    navigate: (Screen) -> Unit,
+    onRegisterClick: () -> Unit
+) {
     Column (
         modifier = Modifier
             .fillMaxSize(),
@@ -24,7 +27,9 @@ fun SignUpScreenButtons() {
     ){
         val btnLabel = stringResource(id = R.string.register_label)
         TealButton(
-            onClick = {},
+            onClick = {
+                onRegisterClick()
+            },
             label = btnLabel
         )
         Spacer(modifier = Modifier.height(MediumPadding))
@@ -36,7 +41,9 @@ fun SignUpScreenButtons() {
             }
         }
         Text(
-            modifier = Modifier.clickable {  },
+            modifier = Modifier.clickable {
+                navigate(Screen.SignInScreen)
+            },
             text = signInText,
             fontSize = 16.sp,
             fontWeight = FontWeight.Medium,
@@ -62,8 +69,8 @@ fun SignUpScreenButtons() {
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewSignUpScreenButtons() {
-    SignUpScreenButtons()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun PreviewSignUpScreenButtons() {
+//    SignUpScreenButtons()
+//}

@@ -1,9 +1,8 @@
 <resources>
-    <string name="app_name">Bookify</string>
-    <string name="home_label">Home</string>
+    <string name="app_name">Oscar</string>
     <string name="see_all_label">See all</string>
-    <string name="authors_label">Authors</string>
     <string name="popular_label">Popular</string>
+    <string name="upcoming_label">Upcoming</string>
     <string name="welcome_back_label">Welcome Back</string>
     <string name="sign_to_ur_acc_label">Sign to your account</string>
     <string name="email_label">Email</string>
@@ -38,7 +37,17 @@
     <string name="onboarding_subtitle_2">Enjoy hands-free reading with our extensive collection of audiobooks. Perfect for multitasking and on-the-go listening.</string>
     <string name="onboarding_title_3">Start Your Adventure</string>
     <string name="onboarding_subtitle_3">"Ready to embark on a quest for inspiration and knowledge? Your adventure begins now. Let's go!"</string>
-    <string name="title_activity_maps">MapsActivity</string>
+    <string name="web_client_id">26157981772-t6bn4fbro1rin4sgmp6javiuqh09v3ae.apps.googleusercontent.com</string>
+    <string name="min_chars_label">Minimum 8 characters</string>
+    <string name="num_present_label">At least 1 number (1–9)</string>
+    <string name="char_presence_label">At least one uppercase or lowercase letter</string>
+
+    <string name="home_label">Home</string>
+    <string name="category_label">Category</string>
+    <string name="favorite_label">Favorite</string>
+    <string name="profile_label">Profile</string>
+
+
 
 
 </resources>

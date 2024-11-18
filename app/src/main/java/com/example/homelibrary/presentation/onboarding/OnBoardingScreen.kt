@@ -10,11 +10,10 @@ import androidx.compose.ui.res.*
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.*
 import com.example.homelibrary.R
-import com.example.homelibrary.presentation.Dimens.AHundred
-import com.example.homelibrary.presentation.Dimens.BigPadding
-import com.example.homelibrary.presentation.Dimens.ExtraBigPadding
-import com.example.homelibrary.presentation.Dimens.ExtraSmallPadding
-import com.example.homelibrary.presentation.Dimens.SmallPadding
+import com.example.homelibrary.util.Dimens.AHundred
+import com.example.homelibrary.util.Dimens.BigPadding
+import com.example.homelibrary.util.Dimens.ExtraSmallPadding
+import com.example.homelibrary.util.Dimens.SmallPadding
 import com.example.homelibrary.presentation.common.DotIndicator
 import com.example.homelibrary.presentation.common.LightTealButton
 import com.example.homelibrary.presentation.common.TealButton

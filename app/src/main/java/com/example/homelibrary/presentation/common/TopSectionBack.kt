@@ -2,8 +2,6 @@ package com.example.homelibrary.presentation.common
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.*
@@ -16,9 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.homelibrary.R
-import com.example.homelibrary.presentation.Dimens.AHundred
-import com.example.homelibrary.presentation.Dimens.ExtraSmallPadding
-import com.example.homelibrary.presentation.Dimens.SmallPadding
+import com.example.homelibrary.util.Dimens.ExtraSmallPadding
+import com.example.homelibrary.util.Dimens.SmallPadding
 import com.example.homelibrary.ui.theme.HomeLibraryTheme
 
 @Composable
@@ -31,11 +28,11 @@ fun TopSectionBack(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(AHundred)
+                .height(50.dp)
                 .padding(horizontal = SmallPadding),
             verticalAlignment = Alignment.Bottom
         ) {
-            Box(
+           /* Box(
                 modifier = Modifier
                     .padding(ExtraSmallPadding)
             ) {
@@ -47,8 +44,9 @@ fun TopSectionBack(
                     contentDescription = null
                 )
             }
-
+            */
         }
+
         Column(
             modifier = Modifier
                 .padding(start = 24.dp, top = 16.dp, end = 24.dp)

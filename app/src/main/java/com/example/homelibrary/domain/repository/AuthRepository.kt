@@ -1,4 +1,13 @@
 package com.example.homelibrary.domain.repository
 
-class AuthRepository {
+interface AuthRepository {
+    suspend fun login(
+        email: String,
+        password: String
+    )
+
+    suspend fun register(
+        email: String,
+        password: String
+    )
 }
