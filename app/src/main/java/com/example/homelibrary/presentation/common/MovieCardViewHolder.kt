@@ -32,12 +32,12 @@ fun MovieCardViewHolder(
     lastItemEndPadding: Dp,
     navHostController: NavHostController
 ){
-    val imageState = rememberAsyncImagePainter(
-        model = ImageRequest.Builder(LocalContext.current)
-            .data(MovieApi.IMAGE_BASE_URL + movie.backdropPath)
-            .size(Size.ORIGINAL)
-            .build()
-    ).state
+    val imageRequest = ImageRequest.Builder(LocalContext.current)
+        .data(MovieApi.IMAGE_BASE_URL + movie.backdropPath)
+        .size(Size.ORIGINAL)
+        .build()
+
+    val imageState = rememberAsyncImagePainter(model = imageRequest).state
 
 
         Box(
