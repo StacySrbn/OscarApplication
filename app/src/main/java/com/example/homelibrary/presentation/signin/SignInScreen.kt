@@ -1,9 +1,13 @@
 package com.example.homelibrary.presentation.signin
 
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.homelibrary.R
@@ -53,7 +57,9 @@ fun SignInScreen(
         }
     }
 
-    Column {
+    Column(
+        modifier = Modifier.background(colorResource(id = R.color.milk_white))
+    ) {
         TopSectionBack(iconVisibility, title, subTitle)
         EmailPasswordInputFields(
             emailState = state.email,

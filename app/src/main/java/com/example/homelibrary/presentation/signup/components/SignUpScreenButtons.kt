@@ -14,6 +14,7 @@ import com.example.homelibrary.R
 import com.example.homelibrary.util.Dimens.MediumPadding
 import com.example.homelibrary.presentation.common.TealButton
 import com.example.homelibrary.presentation.navgraph.Screen
+import com.example.homelibrary.util.Dimens.ExtraSmallPadding
 
 @Composable
 fun SignUpScreenButtons(
@@ -40,15 +41,19 @@ fun SignUpScreenButtons(
                 append(stringResource(id = R.string.signin_label))
             }
         }
+
         Text(
-            modifier = Modifier.clickable {
-                navigate(Screen.SignInScreen)
-            },
+            modifier = Modifier
+                .clickable {
+                    navigate(Screen.SignInScreen)
+                },
             text = signInText,
             fontSize = 16.sp,
             fontWeight = FontWeight.Medium,
             color = colorResource(id = R.color.gray)
         )
+
+
         Spacer(modifier = Modifier.padding(MediumPadding))
 
         Text(

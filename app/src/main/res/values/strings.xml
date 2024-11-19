@@ -31,12 +31,14 @@
     <string name="signin_label"> Sign in</string>
     <string name="register_agreement_1">By clicking Register, you agree to our </string>
     <string name="register_agreement_2">Terms and Data Policy.</string>
-    <string name="onboarding_title_1">Now reading books will be easier</string>
-    <string name="onboarding_subtitle_1"> Discover new worlds, join a vibrant reading community. Start your reading adventure effortlessly with us.</string>
-    <string name="onboarding_title_2">Listen to Your Favorite Stories</string>
-    <string name="onboarding_subtitle_2">Enjoy hands-free reading with our extensive collection of audiobooks. Perfect for multitasking and on-the-go listening.</string>
-    <string name="onboarding_title_3">Start Your Adventure</string>
-    <string name="onboarding_subtitle_3">"Ready to embark on a quest for inspiration and knowledge? Your adventure begins now. Let's go!"</string>
+
+    <string name="onboarding_title_1">Stream Movies Effortlessly</string>
+    <string name="onboarding_subtitle_1">Discover a vast library of films, from classics to the latest blockbusters. Enjoy an unparalleled streaming experience with us.</string>
+    <string name="onboarding_title_2">Watch Anywhere, Anytime</string>
+    <string name="onboarding_subtitle_2">Enjoy your favorite movies on the go. Stream on any device, anytime, anywhere, without any hassle.</string>
+    <string name="onboarding_title_3">Join the Movie Community</string>
+    <string name="onboarding_subtitle_3">Connect with fellow movie enthusiasts, share reviews, and explore new genres together. Your cinematic journey starts here!</string>
+
     <string name="web_client_id">26157981772-t6bn4fbro1rin4sgmp6javiuqh09v3ae.apps.googleusercontent.com</string>
     <string name="min_chars_label">Minimum 8 characters</string>
     <string name="num_present_label">At least 1 number (1–9)</string>

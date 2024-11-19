@@ -4,8 +4,7 @@ import com.example.homelibrary.data.repository.AuthRepositoryImpl
 import com.example.homelibrary.data.repository.MovieListRepositoryImpl
 import com.example.homelibrary.domain.repository.AuthRepository
 import com.example.homelibrary.domain.repository.MovieListRepository
-import dagger.Binds
-import dagger.Module
+import dagger.*
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton

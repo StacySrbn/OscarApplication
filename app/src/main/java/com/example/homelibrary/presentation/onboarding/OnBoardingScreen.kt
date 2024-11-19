@@ -1,5 +1,6 @@
 package com.example.homelibrary.presentation.onboarding
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.*
@@ -12,13 +13,13 @@ import androidx.compose.ui.unit.*
 import com.example.homelibrary.R
 import com.example.homelibrary.util.Dimens.AHundred
 import com.example.homelibrary.util.Dimens.BigPadding
-import com.example.homelibrary.util.Dimens.ExtraSmallPadding
 import com.example.homelibrary.util.Dimens.SmallPadding
 import com.example.homelibrary.presentation.common.DotIndicator
 import com.example.homelibrary.presentation.common.LightTealButton
 import com.example.homelibrary.presentation.common.TealButton
 import com.example.homelibrary.presentation.navgraph.Screen
 import com.example.homelibrary.presentation.onboarding.components.OnBoardingPage
+import com.example.homelibrary.util.Dimens.MediumPadding
 import kotlinx.coroutines.launch
 
 @Composable
@@ -31,21 +32,23 @@ fun OnBoardingScreen(
         Page(
             title = stringResource(id = R.string.onboarding_title_1),
             subtitle = stringResource(id = R.string.onboarding_subtitle_1),
-            image = R.drawable.frame_1
+            image = R.drawable.pic1
         ),
         Page(
             title = stringResource(id = R.string.onboarding_title_2),
             subtitle = stringResource(id = R.string.onboarding_subtitle_2),
-            image = R.drawable.frame_2
+            image = R.drawable.pic2
         ),
         Page(
             title = stringResource(id = R.string.onboarding_title_3),
             subtitle = stringResource(id = R.string.onboarding_subtitle_3),
-            image = R.drawable.frame_3
+            image = R.drawable.pic3
         )
     )
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(colorResource(id = R.color.milk_white)),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
@@ -83,7 +86,7 @@ fun OnBoardingScreen(
                             }
                         },
                     text = buttonState.value[0],
-                    fontSize = 14.sp,
+                    fontSize = 20.sp,
                     fontWeight = FontWeight.Medium,
                     color = colorResource(id = R.color.teal_main)
                 )
@@ -119,7 +122,7 @@ fun OnBoardingScreen(
                 }
             }
         )
-        Spacer(modifier = Modifier.height(ExtraSmallPadding))
+        Spacer(modifier = Modifier.height(MediumPadding))
 
         if (buttonState.value[2].isNotEmpty()){
             LightTealButton(
@@ -133,7 +136,6 @@ fun OnBoardingScreen(
             )
         }
 
-        // Bottom Spacer to balance the layout
         Spacer(modifier = Modifier.height(32.dp))
     }
 }

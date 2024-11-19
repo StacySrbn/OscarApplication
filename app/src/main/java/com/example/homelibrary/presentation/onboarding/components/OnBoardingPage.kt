@@ -30,7 +30,7 @@ fun OnBoardingPage(
         Image(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(350.dp)
+                .height(385.dp)
                 .padding(horizontal = MediumPadding),
             painter = painterResource(id = page.image),
             contentDescription = null,
@@ -47,11 +47,11 @@ fun OnBoardingPage(
         )
         Spacer(modifier = Modifier.height(12.dp))
         Text(
-            modifier = Modifier.padding(horizontal = SmallPadding),
+            modifier = Modifier.padding(horizontal = MediumPadding),
             text = page.subtitle,
-            color = colorResource(id = R.color.gray),
+            color = colorResource(id = R.color.gray_medium),
             fontWeight = FontWeight.Normal,
-            fontSize = 16.sp,
+            fontSize = 19.sp,
             textAlign = TextAlign.Center
         )
 
@@ -66,7 +66,7 @@ fun OnBoardingPagePreview(){
             page = Page(
                 title = "Now reading books will be easier",
                 subtitle = " Discover new worlds, join a vibrant reading community. Start your reading adventure effortlessly with us.",
-                image = R.drawable.frame_1
+                image = R.drawable.pic1
             )
         )
     }

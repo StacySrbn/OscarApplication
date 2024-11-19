@@ -39,71 +39,79 @@ fun MovieCardViewHolder(
             .build()
     ).state
 
-    Column {
+
         Box(
             modifier = Modifier
-                .wrapContentSize()
+                .height(240.dp)
+                .width(160.dp)
+                .clip(RoundedCornerShape(12.dp))
                 .padding(start = Dimens.MediumPadding, end = lastItemEndPadding)
                 .clickable {
                     navHostController.navigate(Screen.DetailsScreen.withArgs("${movie.id}"))
-                }
+                },
+            contentAlignment = Alignment.Center
         ) {
-            if (imageState is AsyncImagePainter.State.Error){
-                Box (
-                    modifier = Modifier
-                        .height(184.dp)
-                        .width(130.dp)
-                        .clip(RoundedCornerShape(8.dp)),
-                    contentAlignment = Alignment.Center
-                ){
-                    Icon(
-                        imageVector = Icons.Rounded.ImageNotSupported,
+            Column {
+
+                if (imageState is AsyncImagePainter.State.Error) {
+                    Box(
+                        modifier = Modifier
+                            .height(184.dp)
+                            .width(130.dp)
+                            .clip(RoundedCornerShape(12.dp))
+                            .background(MaterialTheme.colorScheme.primaryContainer),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            modifier = Modifier.size(60.dp),
+                            imageVector = Icons.Rounded.ImageNotSupported,
+                            contentDescription = movie.title
+                        )
+                    }
+                }
+                if (imageState is AsyncImagePainter.State.Success) {
+                    Image(
+                        modifier = Modifier
+                            .height(184.dp)
+                            .width(130.dp)
+                            .clip(RoundedCornerShape(8.dp)),
+                        painter = imageState.painter,
+                        contentScale = ContentScale.Crop,
                         contentDescription = movie.title
                     )
                 }
-            }
-            if (imageState is AsyncImagePainter.State.Success) {
-                Image(
-                    modifier = Modifier
-                        .height(184.dp)
-                        .width(130.dp)
-                        .clip(RoundedCornerShape(8.dp)),
-                    painter = imageState.painter,
-                    contentScale = ContentScale.Crop,
-                    contentDescription = movie.title
-                )
-            }
 
 
-            Spacer(modifier = Modifier.height(Dimens.ExtraSmallPadding))
-            Text(
-                text = movie.title,
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Medium,
-                color = Color.Black,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-            Spacer(modifier = Modifier.height(4.dp))
-
-            Row (
-                modifier = Modifier
-                    .wrapContentWidth()
-                    .padding(start = 16.dp, bottom = 12.dp)
-            ){
-                RatingBar(
-                    starsModifier = Modifier.size(14.dp),
-                    rating = movie.voteAverage/2
-                )
+                Spacer(modifier = Modifier.height(Dimens.ExtraSmallPadding))
                 Text(
                     modifier = Modifier.padding(start = 4.dp),
-                    text = movie.voteAverage.toString().take(3),
-                    color = colorResource(id = R.color.teal_main),
-                    fontSize = 12.sp,
-                    maxLines = 1
+                    text = movie.title,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = Color.Black,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
+                Spacer(modifier = Modifier.height(4.dp))
+
+                Row(
+                    modifier = Modifier
+                        .wrapContentWidth()
+                        .padding(bottom = 12.dp)
+                ) {
+                    RatingBar(
+                        starsModifier = Modifier.size(14.dp),
+                        rating = movie.voteAverage / 2,
+                        starsColor = colorResource(id = R.color.golden)
+                    )
+                    Text(
+                        modifier = Modifier.padding(start = 4.dp),
+                        text = movie.voteAverage.toString().take(3),
+                        color = colorResource(id = R.color.teal_main),
+                        fontSize = 12.sp,
+                        maxLines = 1
+                    )
+                }
             }
         }
-
-    }
 }

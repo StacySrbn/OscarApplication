@@ -25,7 +25,7 @@ fun TopBar(){
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = SmallPadding)
-                .height(100.dp),
+                .height(60.dp),
             verticalAlignment = Alignment.Bottom,
             horizontalArrangement = Arrangement.SpaceBetween
         ){

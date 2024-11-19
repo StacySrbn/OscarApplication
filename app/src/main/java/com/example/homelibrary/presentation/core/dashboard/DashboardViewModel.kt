@@ -57,22 +57,21 @@ class DashboardViewModel @Inject constructor(
                                 errorMessage = result.message ?: "An unexpected error occurred.")
                         }
                     }
-                    is Resource.Loading -> {
-                        _movieListState.update {
-                            it.copy(isLoading = result.isLoading)
-                        }
-                    }
                     is Resource.Success -> {
-                        result.data?.let{ movieList ->
+                        println("IS FETCHING SUCCESSFUL: TRUE")
+                        result.data?.let { movieList ->
+                            println("FETCHED DATA: $movieList")
                             _movieListState.update {
                                 if (category == POPULAR_CATEGORY){
                                     it.copy(
-                                        popularMovieList = movieListState.value.popularMovieList + movieList.shuffled(),
+                                        popularMovieList = movieListState.value.popularMovieList
+                                                + movieList.shuffled(),
                                         popularMovieListPage = page + 1
                                     )
                                 } else {
                                     it.copy(
-                                        upcomingMovieList = movieListState.value.upcomingMovieList + movieList.shuffled(),
+                                        upcomingMovieList = movieListState.value.upcomingMovieList
+                                                + movieList.shuffled(),
                                         upcomingMovieListPage = page + 1
                                     )
                                 }
@@ -80,6 +79,12 @@ class DashboardViewModel @Inject constructor(
                             }
                         }
                     }
+                    is Resource.Loading -> {
+                        _movieListState.update {
+                            it.copy(isLoading = result.isLoading)
+                        }
+                    }
+
                 }
 
             }

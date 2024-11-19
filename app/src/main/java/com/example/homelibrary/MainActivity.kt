@@ -8,6 +8,7 @@ import androidx.activity.*
 import androidx.activity.compose.*
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 import androidx.core.animation.doOnEnd
@@ -41,8 +42,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-
         installSplashScreen().apply {
 
             setKeepOnScreenCondition {
@@ -64,13 +63,14 @@ class MainActivity : ComponentActivity() {
         }
         setContent {
             HomeLibraryTheme {
-                val systemController = rememberSystemUiController()
+                SetBarColor(color = MaterialTheme.colorScheme.inverseOnSurface)
+
+                /*val systemController = rememberSystemUiController()
                 SideEffect {
                     systemController.setSystemBarsColor(
-                        color = Color.Transparent,
-                        darkIcons = false
+                        color = Color.Transparent
                     )
-                }
+                }*/
 
                 val startDestination = viewModel.startDestination.collectAsState().value
                 val navController = rememberNavController()
@@ -110,5 +110,13 @@ class MainActivity : ComponentActivity() {
                 )
             }
         }
+    }
+}
+
+@Composable
+private fun SetBarColor(color: Color){
+    val systemUiController = rememberSystemUiController()
+    LaunchedEffect(key1 = color) {
+        systemUiController.setSystemBarsColor(color)
     }
 }

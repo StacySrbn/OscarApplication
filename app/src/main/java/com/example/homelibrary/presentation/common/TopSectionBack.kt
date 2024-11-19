@@ -28,61 +28,47 @@ fun TopSectionBack(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(50.dp)
-                .padding(horizontal = SmallPadding),
+                .height(150.dp),
+               // .padding(horizontal = SmallPadding)
             verticalAlignment = Alignment.Bottom
         ) {
-           /* Box(
+
+            Column(
                 modifier = Modifier
-                    .padding(ExtraSmallPadding)
+                    .padding(start = 24.dp, top = 16.dp, end = 24.dp)
+                    .fillMaxWidth()
+                    .wrapContentHeight()
             ) {
-                Image(
-                    modifier = Modifier
-                        .size(24.dp)
-                        .clickable { },
-                    imageVector = Icons.Rounded.ArrowBack,
-                    contentDescription = null
-                )
-            }
-            */
-        }
-
-        Column(
-            modifier = Modifier
-                .padding(start = 24.dp, top = 16.dp, end = 24.dp)
-                .fillMaxWidth()
-                .wrapContentHeight()
-        ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = title,
-                    color = Color.Black,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold
-                )
-                if (iconVisibility) {
-                    Spacer(modifier = Modifier.width(ExtraSmallPadding))
-                    Image(
-                        modifier = Modifier
-                            .size(24.dp),
-                        painter = painterResource(id = R.drawable.hello_ic),
-                        contentDescription = null
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = title,
+                        color = Color.Black,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold
                     )
+                    if (iconVisibility) {
+                        Spacer(modifier = Modifier.width(ExtraSmallPadding))
+                        Image(
+                            modifier = Modifier
+                                .size(24.dp),
+                            painter = painterResource(id = R.drawable.hello_ic),
+                            contentDescription = null
+                        )
+                    }
                 }
+                Spacer(modifier = Modifier.height(ExtraSmallPadding))
+                Text(
+                    text = subTitle,
+                    color = colorResource(id = R.color.gray_medium),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Normal
+                )
             }
-            Spacer(modifier = Modifier.height(ExtraSmallPadding))
-            Text(
-                text = subTitle,
-                color = colorResource(id = R.color.gray),
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Normal
-            )
         }
+
     }
-
-
 }
 
 @Preview(showBackground = true)

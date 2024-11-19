@@ -1,6 +1,7 @@
 package com.example.homelibrary.presentation.core
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.*
@@ -8,8 +9,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.*
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.homelibrary.R
 import com.example.homelibrary.presentation.navgraph.Screen
@@ -48,7 +52,9 @@ fun BottomNavigationBar(
 
     NavigationBar {
         Row(
-            modifier = Modifier.background(MaterialTheme.colorScheme.inverseOnSurface)
+            modifier = Modifier
+               .background(colorResource(id = R.color.milk_white))
+               .border(1.dp, Color.Gray, shape = RectangleShape)
         ) {
             items.forEachIndexed { index, bottomItem ->
                 NavigationBarItem(

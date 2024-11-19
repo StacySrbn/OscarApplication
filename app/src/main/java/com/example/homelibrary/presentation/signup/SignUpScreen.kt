@@ -1,9 +1,13 @@
 package com.example.homelibrary.presentation.signup
 
 import android.widget.Toast
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -44,7 +48,11 @@ fun SignUpScreen(
     val title = stringResource(id = R.string.signup_label)
     val subTitle = stringResource(id = R.string.signup_subtitle)
 
-    LazyColumn {
+    LazyColumn (
+        Modifier
+            .background(colorResource(id = R.color.milk_white))
+            .fillMaxHeight()
+    ){
         item {
             TopSectionBack(
                 iconVisibility = false,
