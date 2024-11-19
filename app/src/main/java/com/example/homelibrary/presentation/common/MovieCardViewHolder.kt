@@ -97,7 +97,9 @@ fun MovieCardViewHolder(
                 Row(
                     modifier = Modifier
                         .wrapContentWidth()
-                        .padding(bottom = 12.dp)
+                        .padding(bottom = 12.dp),
+                    horizontalArrangement = Arrangement.Start,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     RatingBar(
                         starsModifier = Modifier.size(14.dp),
@@ -109,6 +111,7 @@ fun MovieCardViewHolder(
                         text = movie.voteAverage.toString().take(3),
                         color = colorResource(id = R.color.teal_main),
                         fontSize = 12.sp,
+                        fontWeight = FontWeight.Medium,
                         maxLines = 1
                     )
                 }
