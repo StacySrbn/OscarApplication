@@ -1,7 +1,9 @@
 package com.example.homelibrary.presentation.core.dashboard
 
 import androidx.lifecycle.*
+import androidx.paging.*
 import com.example.homelibrary.domain.repository.MovieListRepository
+import com.example.homelibrary.domain.use_cases.dashboard.GetAudiobookListUseCase
 import com.example.homelibrary.util.Constants.POPULAR_CATEGORY
 import com.example.homelibrary.util.Constants.UPCOMING_CATEGORY
 import com.example.homelibrary.util.Resource
@@ -12,83 +14,47 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DashboardViewModel @Inject constructor(
-    private val movieListRepository: MovieListRepository
+    private val getAudiobookListUseCase: GetAudiobookListUseCase
 ): ViewModel() {
 
     private var _movieListState = MutableStateFlow(MovieListState())
     val movieListState = _movieListState.asStateFlow()
 
+
+
     init {
-        getMovieList(false, POPULAR_CATEGORY)
-        getMovieList(false, UPCOMING_CATEGORY)
+        getMovieList(POPULAR_CATEGORY)
+        getMovieList(UPCOMING_CATEGORY)
     }
 
-    fun onEvent(event: MovieListUiEvent) {
-        when (event) {
-            is MovieListUiEvent.Paginate -> {
-                getMovieList(true, event.category)
-            }
-        }
-    }
-
-    private fun getMovieList(forceFetchFromRemote: Boolean, category: String){
+    private fun getMovieList(category: String){
         viewModelScope.launch {
 
-            _movieListState.update {
-                it.copy(isLoading = true)
-            }
+            try {
+                _movieListState.update { it.copy(isLoading = true, errorMessage = null) }
 
-            val page = if (category == POPULAR_CATEGORY) {
-                movieListState.value.popularMovieListPage
-            } else {
-                movieListState.value.upcomingMovieListPage
-            }
+                val moviesFlow = getAudiobookListUseCase(category).cachedIn(viewModelScope)
 
-            movieListRepository.getMovieList(
-                forceFetchFromRemote,
-                category,
-                page
-            ).collectLatest { result ->
-                when (result) {
-                    is Resource.Error -> {
-                        _movieListState.update {
-                            it.copy(
-                                isLoading = false,
-                                errorMessage = result.message ?: "An unexpected error occurred.")
-                        }
+                _movieListState.update { state ->
+
+                    when (category) {
+                        POPULAR_CATEGORY -> state.copy(popularMovieList = moviesFlow)
+                        UPCOMING_CATEGORY -> state.copy(upcomingMovieList = moviesFlow)
+                        else -> state
                     }
-                    is Resource.Success -> {
-                        println("IS FETCHING SUCCESSFUL: TRUE")
-                        result.data?.let { movieList ->
-                            println("FETCHED DATA: $movieList")
-                            _movieListState.update {
-                                if (category == POPULAR_CATEGORY){
-                                    it.copy(
-                                        popularMovieList = movieListState.value.popularMovieList
-                                                + movieList.shuffled(),
-                                        popularMovieListPage = page + 1
-                                    )
-                                } else {
-                                    it.copy(
-                                        upcomingMovieList = movieListState.value.upcomingMovieList
-                                                + movieList.shuffled(),
-                                        upcomingMovieListPage = page + 1
-                                    )
-                                }
-
-                            }
-                        }
-                    }
-                    is Resource.Loading -> {
-                        _movieListState.update {
-                            it.copy(isLoading = result.isLoading)
-                        }
-                    }
-
                 }
 
+            } catch (e: Exception) {
+                _movieListState.update {
+                    it.copy(
+                        isLoading = false,
+                        errorMessage = e.message ?: "An unexpected error occurred."
+                    )
+                }
+            } finally {
+                _movieListState.update { it.copy(isLoading = false) }
             }
+
         }
     }
-
 }

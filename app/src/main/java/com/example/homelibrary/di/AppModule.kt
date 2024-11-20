@@ -2,19 +2,21 @@ package com.example.homelibrary.di
 
 import android.app.Application
 import android.content.Context
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
 import androidx.room.Room
 import com.example.homelibrary.data.local_db.Converters
 import com.example.homelibrary.data.local_db.MovieDatabase
+import com.example.homelibrary.data.local_db.MovieEntity
+import com.example.homelibrary.data.local_db.MovieRemoteMediator
 import com.example.homelibrary.domain.manager.LocalUserManager
 import com.example.homelibrary.domain.use_cases.app_entry.AppEntryUseCases
 import com.example.homelibrary.domain.use_cases.app_entry.ReadAppEntry
 import com.example.homelibrary.domain.use_cases.app_entry.SaveAppEntry
 import com.example.homelibrary.data.manager.LocalUserManagerImpl
 import com.example.homelibrary.data.remote.MovieApi
-import com.example.homelibrary.data.repository.AuthRepositoryImpl
-import com.example.homelibrary.data.repository.MovieListRepositoryImpl
 import com.example.homelibrary.domain.repository.AuthRepository
-import com.example.homelibrary.domain.repository.MovieListRepository
 import com.example.homelibrary.domain.use_cases.auth.SignInUseCase
 import com.example.homelibrary.domain.use_cases.auth.SignUpUseCase
 import com.example.homelibrary.presentation.signin.google.GoogleAuthUiClient
@@ -23,8 +25,7 @@ import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
-import dagger.Module
-import dagger.Provides
+import dagger.*
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
@@ -33,6 +34,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+@OptIn(ExperimentalPagingApi::class)
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {

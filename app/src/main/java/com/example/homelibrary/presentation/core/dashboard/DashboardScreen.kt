@@ -13,7 +13,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.*
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.paging.compose.LazyPagingItems
 import com.example.homelibrary.R
+import com.example.homelibrary.domain.model.Movie
 import com.example.homelibrary.util.Dimens.BigPadding
 import com.example.homelibrary.util.Dimens.SmallPadding
 import com.example.homelibrary.presentation.common.MovieRowSlider
@@ -26,7 +28,8 @@ import com.example.homelibrary.util.Constants.UPCOMING_CATEGORY
 @Composable
 fun DashboardScreen(
     movieListState: MovieListState,
-    oneEvent: (MovieListUiEvent) -> Unit,
+    popularMovieList: LazyPagingItems<Movie>,
+    upcomingMovieList: LazyPagingItems<Movie>,
     newsCards: List<String>,
     navController: NavHostController
 ){
@@ -54,18 +57,13 @@ fun DashboardScreen(
                 Toast.makeText(LocalContext.current, "Error: ${movieListState.errorMessage}", Toast.LENGTH_SHORT).show()
             } else {
 
-                if (movieListState.popularMovieList.isNotEmpty()) {
-                    val labelPopular = stringResource(id = R.string.popular_label)
-                    MovieRowSlider(label = labelPopular, movieList = movieListState.popularMovieList, navController, oneEvent, movieListState, POPULAR_CATEGORY)
-                    Spacer(modifier = Modifier.height(BigPadding))
-                } else println("Fetching movie list which is empty: ${movieListState.popularMovieList.isEmpty()}")
-                Log.d("API_MY", "${movieListState.popularMovieList}")
+                val labelPopular = stringResource(id = R.string.popular_label)
+                MovieRowSlider(label = labelPopular, movieList = popularMovieList, navController)
+                Spacer(modifier = Modifier.height(BigPadding))
 
-                if (movieListState.upcomingMovieList.isNotEmpty()) {
-                    val labelUpcoming = stringResource(id = R.string.upcoming_label)
-                    MovieRowSlider(label = labelUpcoming, movieList = movieListState.upcomingMovieList, navController, oneEvent, movieListState, UPCOMING_CATEGORY)
-                    Spacer(modifier = Modifier.height(BigPadding))
-                }
+                val labelUpcoming = stringResource(id = R.string.upcoming_label)
+                MovieRowSlider(label = labelUpcoming, movieList = upcomingMovieList, navController)
+                Spacer(modifier = Modifier.height(BigPadding))
             }
         }
 

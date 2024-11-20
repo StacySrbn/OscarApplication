@@ -1,5 +1,6 @@
 package com.example.homelibrary.presentation.core
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -9,6 +10,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.homelibrary.R
 import com.example.homelibrary.presentation.core.dashboard.DashboardScreen
 import com.example.homelibrary.presentation.core.dashboard.DashboardViewModel
@@ -20,6 +22,12 @@ fun CoreScreen(navController: NavHostController){
     val dashboardViewModel = hiltViewModel<DashboardViewModel>()
     val movieListState = dashboardViewModel.movieListState.collectAsState().value
     val bottomNavController = rememberNavController()
+
+    val popularMovieList = movieListState.popularMovieList.collectAsLazyPagingItems()
+    val upcomingMovieList = movieListState.upcomingMovieList.collectAsLazyPagingItems()
+
+    Log.d("MovieRemoteMediator", "popular list size ${popularMovieList.itemCount}")
+    Log.d("MovieRemoteMediator", "upcoming list size ${upcomingMovieList.itemCount}")
 
     Scaffold(
         topBar = { null },
@@ -38,11 +46,13 @@ fun CoreScreen(navController: NavHostController){
                 startDestination = Screen.DashboardScreen.route
             ){
                 composable(Screen.DashboardScreen.route) {
+
                     DashboardScreen(
                         navController = navController,
                         newsCards = emptyList(),
                         movieListState = movieListState,
-                        oneEvent = dashboardViewModel::onEvent
+                        popularMovieList = popularMovieList,
+                        upcomingMovieList = upcomingMovieList
                     )
                 }
                 composable(Screen.CategoryScreen.route) {

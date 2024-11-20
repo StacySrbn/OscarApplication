@@ -73,10 +73,12 @@ dependencies {
     implementation(libs.firebase.firestore.ktx)
     implementation (libs.firebase.auth.ktx)
     implementation(libs.firebase.storage.ktx)
+
     implementation(libs.androidx.room.common)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
     kapt(libs.androidx.room.compiler)
+    implementation ("androidx.room:room-paging:2.6.1")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -114,6 +116,7 @@ dependencies {
 
     implementation ("androidx.datastore:datastore-preferences:1.1.1")
 
-
+    implementation ("androidx.paging:paging-runtime-ktx:3.3.4")
+    implementation ("androidx.paging:paging-compose:3.3.4")
 
 }
