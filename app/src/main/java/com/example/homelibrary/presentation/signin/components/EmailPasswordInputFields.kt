@@ -11,8 +11,8 @@ import androidx.compose.ui.unit.*
 import com.example.homelibrary.R
 import com.example.homelibrary.util.Dimens.MediumPadding
 import com.example.homelibrary.util.Dimens.SmallPadding
-import com.example.homelibrary.presentation.common.InputField
-import com.example.homelibrary.presentation.common.PasswordField
+import com.example.homelibrary.presentation.common.auth.InputField
+import com.example.homelibrary.presentation.common.auth.PasswordField
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

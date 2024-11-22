@@ -1,4 +1,4 @@
-package com.example.homelibrary.presentation.common
+package com.example.homelibrary.presentation.common.buttons
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape

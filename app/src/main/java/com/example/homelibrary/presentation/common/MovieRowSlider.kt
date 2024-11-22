@@ -7,8 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.*
 import androidx.compose.ui.unit.*
 import androidx.navigation.NavHostController
+import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.example.homelibrary.domain.model.Movie
+import com.example.homelibrary.presentation.core.dashboard.MovieListState
 import com.example.homelibrary.presentation.core.dashboard.components.HeaderRowSlider
 import com.example.homelibrary.util.Dimens.MediumPadding
 import com.example.homelibrary.util.Dimens.SmallPadding
@@ -17,7 +19,8 @@ import com.example.homelibrary.util.Dimens.SmallPadding
 fun MovieRowSlider(
     label: String,
     movieList: LazyPagingItems<Movie>,
-    navHostController: NavHostController
+    navHostController: NavHostController,
+    isLoading: Boolean,
 ){
     Column (
         modifier = Modifier
@@ -29,7 +32,13 @@ fun MovieRowSlider(
             items(movieList.itemCount) { index ->
                 val movie = movieList[index]
                 val lastItemEndPadding = if (index == movieList.itemCount - 1) MediumPadding else 0.dp
-                movie?.let { MovieCardViewHolder(movie, lastItemEndPadding, navHostController)}
+                movie?.let {
+                    ShimmerMovieItem(
+                        isLoading = isLoading,
+                        contentAfterLoading = { MovieCardViewHolder(movie, lastItemEndPadding, navHostController)},
+                        lastItemEndPadding = lastItemEndPadding
+                    )
+                }
                 if (movie != null) {
                     Log.d("MY_LOG", "Movie of index $index had ID: ${movie.id}")
                 }

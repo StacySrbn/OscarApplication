@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.*
 import com.example.homelibrary.R
 import com.example.homelibrary.util.Dimens.ExtraSmallPadding
 import com.example.homelibrary.util.Dimens.MediumPadding
-import com.example.homelibrary.presentation.common.TealButton
+import com.example.homelibrary.presentation.common.buttons.TealButton
 import com.example.homelibrary.presentation.navgraph.Screen
 import com.example.homelibrary.ui.theme.HomeLibraryTheme
 

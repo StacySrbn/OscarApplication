@@ -53,12 +53,18 @@ fun BottomNavigationBar(
     NavigationBar {
         Row(
             modifier = Modifier
-               .background(colorResource(id = R.color.milk_white))
-               .border(1.dp, Color.Gray, shape = RectangleShape)
+                .background(colorResource(id = R.color.milk_white))
+                .border(1.dp, Color.Gray, shape = RectangleShape)
         ) {
             items.forEachIndexed { index, bottomItem ->
                 NavigationBarItem(
                     selected = selected.intValue == index,
+                    colors = NavigationBarItemDefaults.colors(
+                        selectedIconColor = colorResource(id = R.color.teal_main),
+                        unselectedIconColor = colorResource(id = R.color.milk),
+                        selectedTextColor = colorResource(id = R.color.teal_main),
+                        unselectedTextColor = colorResource(id = R.color.milk)
+                    ),
                     onClick = {
                         selected.intValue = index
                         when (selected.intValue) {
@@ -84,13 +90,13 @@ fun BottomNavigationBar(
                         Icon (
                             imageVector = bottomItem.icon,
                             contentDescription = bottomItem.title,
-                            tint = colorResource(R.color.teal_main)
+                            //tint = colorResource(R.color.teal_main)
                         )
                     },
                     label = {
                         Text(
                             text = bottomItem.title,
-                            color = colorResource(R.color.teal_main)
+                            //color = colorResource(R.color.teal_main)
                         )
                     }
                 )

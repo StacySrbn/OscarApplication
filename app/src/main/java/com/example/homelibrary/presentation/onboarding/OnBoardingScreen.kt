@@ -15,8 +15,8 @@ import com.example.homelibrary.util.Dimens.AHundred
 import com.example.homelibrary.util.Dimens.BigPadding
 import com.example.homelibrary.util.Dimens.SmallPadding
 import com.example.homelibrary.presentation.common.DotIndicator
-import com.example.homelibrary.presentation.common.LightTealButton
-import com.example.homelibrary.presentation.common.TealButton
+import com.example.homelibrary.presentation.common.buttons.LightTealButton
+import com.example.homelibrary.presentation.common.buttons.TealButton
 import com.example.homelibrary.presentation.navgraph.Screen
 import com.example.homelibrary.presentation.onboarding.components.OnBoardingPage
 import com.example.homelibrary.util.Dimens.MediumPadding

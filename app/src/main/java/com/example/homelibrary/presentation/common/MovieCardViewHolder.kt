@@ -74,7 +74,7 @@ fun MovieCardViewHolder(
                         modifier = Modifier
                             .height(184.dp)
                             .width(130.dp)
-                            .clip(RoundedCornerShape(8.dp)),
+                            .clip(RoundedCornerShape(12.dp)),
                         painter = imageState.painter,
                         contentScale = ContentScale.Crop,
                         contentDescription = movie.title

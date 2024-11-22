@@ -6,8 +6,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 
 data class MovieListState(
-    val isLoading: Boolean = false,
-    val errorMessage: String? = null,
+    val isLoadingPopular: Boolean = false,
+    val isLoadingUpcoming: Boolean = false,
+
+    val errorMessagePopular: String? = null,
+    val errorMessageUpcoming: String? = null,
 
     val popularMovieList: Flow<PagingData<Movie>> = emptyFlow(),
     val upcomingMovieList: Flow<PagingData<Movie>> = emptyFlow()

@@ -49,7 +49,7 @@ fun CoreScreen(navController: NavHostController){
 
                     DashboardScreen(
                         navController = navController,
-                        newsCards = emptyList(),
+                        banners = emptyList(),
                         movieListState = movieListState,
                         popularMovieList = popularMovieList,
                         upcomingMovieList = upcomingMovieList

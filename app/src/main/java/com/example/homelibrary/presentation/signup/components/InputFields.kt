@@ -7,8 +7,8 @@ import androidx.compose.ui.res.stringResource
 import com.example.homelibrary.R
 import com.example.homelibrary.util.Dimens
 import com.example.homelibrary.util.Dimens.SmallPadding
-import com.example.homelibrary.presentation.common.InputField
-import com.example.homelibrary.presentation.common.PasswordField
+import com.example.homelibrary.presentation.common.auth.InputField
+import com.example.homelibrary.presentation.common.auth.PasswordField
 
 @Composable
 fun InputFields(
