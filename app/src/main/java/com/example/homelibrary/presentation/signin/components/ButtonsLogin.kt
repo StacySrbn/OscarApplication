@@ -52,7 +52,7 @@ fun ButtonsLogin(
             text = signupText,
             fontSize = 16.sp,
             fontWeight = FontWeight.Medium,
-            color = colorResource(id = R.color.gray)
+            color = colorResource(id = R.color.graphite)
         )
         Spacer(modifier =  Modifier.height(MediumPadding))
         Row (
@@ -73,7 +73,7 @@ fun ButtonsLogin(
                 text = stringResource(id = R.string.or_with_label),
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Normal,
-                color = colorResource(id = R.color.gray)
+                color = colorResource(id = R.color.graphite)
             )
             Divider(
                 modifier = Modifier

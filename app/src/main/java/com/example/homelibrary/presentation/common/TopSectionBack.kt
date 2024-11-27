@@ -61,7 +61,7 @@ fun TopSectionBack(
                 Spacer(modifier = Modifier.height(ExtraSmallPadding))
                 Text(
                     text = subTitle,
-                    color = colorResource(id = R.color.gray_medium),
+                    color = colorResource(id = R.color.graphite),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal
                 )

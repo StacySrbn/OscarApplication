@@ -9,9 +9,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.*
 import androidx.navigation.navArgument
-import com.example.homelibrary.HelperScreen
+import com.example.homelibrary.presentation.profile.HelperScreen
 import com.example.homelibrary.presentation.core.CoreScreen
-import com.example.homelibrary.presentation.core.dashboard.DashboardScreen
 import com.example.homelibrary.presentation.details.DetailsScreen
 import com.example.homelibrary.presentation.onboarding.OnBoardingEvent
 import com.example.homelibrary.presentation.onboarding.OnBoardingScreen

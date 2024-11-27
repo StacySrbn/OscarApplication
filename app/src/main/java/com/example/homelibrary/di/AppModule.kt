@@ -17,8 +17,12 @@ import com.example.homelibrary.domain.use_cases.app_entry.SaveAppEntry
 import com.example.homelibrary.data.manager.LocalUserManagerImpl
 import com.example.homelibrary.data.remote.MovieApi
 import com.example.homelibrary.domain.repository.AuthRepository
+import com.example.homelibrary.domain.repository.BannersRepository
+import com.example.homelibrary.domain.repository.MovieListRepository
 import com.example.homelibrary.domain.use_cases.auth.SignInUseCase
 import com.example.homelibrary.domain.use_cases.auth.SignUpUseCase
+import com.example.homelibrary.domain.use_cases.dashboard.GetBannersUseCase
+import com.example.homelibrary.domain.use_cases.dashboard.GetMovieListUseCase
 import com.example.homelibrary.presentation.signin.google.GoogleAuthUiClient
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
@@ -102,7 +106,20 @@ object AppModule {
         authRepository: AuthRepository
     ): SignUpUseCase = SignUpUseCase(authRepository)
 
-   private val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
+    @Provides
+    @Singleton
+    fun provideGetBannersUseCase(
+        bannersRepository: BannersRepository
+    ) : GetBannersUseCase = GetBannersUseCase(bannersRepository)
+
+    @Provides
+    @Singleton
+    fun provideGetMovieListUseCase(
+        movieListRepository: MovieListRepository
+    ) : GetMovieListUseCase = GetMovieListUseCase(movieListRepository)
+
+
+    private val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
 

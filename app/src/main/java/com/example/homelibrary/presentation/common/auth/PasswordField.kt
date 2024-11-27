@@ -49,7 +49,7 @@ fun PasswordField(
             label = {
                 Text(
                     text = stringResource(id = R.string.ur_password_label),
-                    color = colorResource(id = R.color.gray)
+                    color = colorResource(id = R.color.graphite)
                 )
             },
             visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
@@ -71,10 +71,10 @@ fun PasswordField(
                 .fillMaxWidth()
                 .padding(top = 6.dp),
             shape = RoundedCornerShape(8.dp),
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                containerColor = colorResource(id = R.color.light_gray),
-                unfocusedBorderColor = Color.Gray,
-                focusedBorderColor = colorResource(id = R.color.graphite)
+            colors = TextFieldDefaults.colors(
+                unfocusedContainerColor = colorResource(id = R.color.light_gray),
+                focusedContainerColor = colorResource(id = R.color.light_gray)
+
             )
         )
 

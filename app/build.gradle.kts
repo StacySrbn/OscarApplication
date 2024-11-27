@@ -77,6 +77,8 @@ dependencies {
     implementation(libs.androidx.room.common)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
+    implementation(libs.firebase.database.ktx)
+    implementation(libs.androidx.material3.android)
     kapt(libs.androidx.room.compiler)
     implementation ("androidx.room:room-paging:2.6.1")
 
@@ -94,7 +96,10 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.4.0")
 
     implementation("androidx.compose.material:material-icons-extended:1.7.5")
+
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.31.4-beta")
+    implementation("com.google.accompanist:accompanist-pager:0.30.1")
+    implementation("com.google.accompanist:accompanist-swiperefresh:0.31.4-beta")
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")

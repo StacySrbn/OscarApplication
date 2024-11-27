@@ -1,4 +1,4 @@
-package com.example.homelibrary
+package com.example.homelibrary.presentation.profile
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf

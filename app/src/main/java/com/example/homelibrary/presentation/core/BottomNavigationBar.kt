@@ -4,6 +4,15 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Category
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.Category
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -20,7 +29,8 @@ import com.example.homelibrary.presentation.navgraph.Screen
 
 data class BottomItem(
     val title: String,
-    val icon: ImageVector
+    val selectedIcon: ImageVector,
+    val unselectedIcon: ImageVector
 )
 @Composable
 fun BottomNavigationBar(
@@ -30,19 +40,23 @@ fun BottomNavigationBar(
     val items = listOf(
         BottomItem(
             title = stringResource(id = R.string.home_label),
-            icon = Icons.Rounded.Home
+            selectedIcon = Icons.Filled.Home,
+            unselectedIcon = Icons.Outlined.Home
         ),
         BottomItem(
             title = stringResource(id = R.string.category_label),
-            icon = Icons.Rounded.Category
+            selectedIcon = Icons.Filled.Category,
+            unselectedIcon = Icons.Outlined.Category
         ),
         BottomItem(
             title = stringResource(id = R.string.favorite_label),
-            icon = Icons.Rounded.Favorite
+            selectedIcon = Icons.Filled.Favorite,
+            unselectedIcon = Icons.Outlined.FavoriteBorder
         ),
         BottomItem(
             title = stringResource(id = R.string.profile_label),
-            icon = Icons.Rounded.AccountCircle
+            selectedIcon = Icons.Filled.AccountCircle,
+            unselectedIcon = Icons.Outlined.AccountCircle
         )
     )
 
@@ -61,9 +75,10 @@ fun BottomNavigationBar(
                     selected = selected.intValue == index,
                     colors = NavigationBarItemDefaults.colors(
                         selectedIconColor = colorResource(id = R.color.teal_main),
-                        unselectedIconColor = colorResource(id = R.color.milk),
+                        unselectedIconColor = colorResource(id = R.color.teal_main),
                         selectedTextColor = colorResource(id = R.color.teal_main),
-                        unselectedTextColor = colorResource(id = R.color.milk)
+                        unselectedTextColor = colorResource(id = R.color.teal_main),
+                        indicatorColor = Color.Transparent
                     ),
                     onClick = {
                         selected.intValue = index
@@ -88,15 +103,15 @@ fun BottomNavigationBar(
                     },
                     icon = {
                         Icon (
-                            imageVector = bottomItem.icon,
+                            imageVector = if(index == selected.intValue) {
+                                bottomItem.selectedIcon
+                            } else bottomItem.unselectedIcon,
                             contentDescription = bottomItem.title,
-                            //tint = colorResource(R.color.teal_main)
                         )
                     },
                     label = {
                         Text(
                             text = bottomItem.title,
-                            //color = colorResource(R.color.teal_main)
                         )
                     }
                 )

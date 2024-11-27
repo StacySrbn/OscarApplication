@@ -2,6 +2,7 @@ package com.example.homelibrary.presentation.common
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -51,10 +52,9 @@ fun ShimmerMovieItem(
     lastItemEndPadding: Dp
 ){
     if (isLoading) {
-
         Box(
             modifier = Modifier
-                .height(240.dp)
+                .height(250.dp)
                 .width(160.dp)
                 .clip(RoundedCornerShape(12.dp))
                 .padding(start = MediumPadding, end = lastItemEndPadding),
@@ -96,9 +96,28 @@ fun ShimmerMovieItem(
                             .shimmerEffect(),
                     )
                 }
-
             }
         }
+    } else {
+        contentAfterLoading()
+    }
+}
+
+@Composable
+fun ShimmerBannerItem(
+    isLoading: Boolean,
+    contentAfterLoading: @Composable () -> Unit,
+){
+    if (isLoading) {
+        Box(
+            modifier = Modifier
+                .height(200.dp)
+                .fillMaxWidth()
+                .padding(horizontal = MediumPadding)
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color.Gray)
+                .shimmerEffect()
+        )
     } else {
         contentAfterLoading()
     }

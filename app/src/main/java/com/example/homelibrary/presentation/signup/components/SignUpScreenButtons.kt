@@ -59,7 +59,7 @@ fun SignUpScreenButtons(
             text = stringResource(id = R.string.register_agreement_1),
             fontSize = 14.sp,
             fontWeight = FontWeight.Medium,
-            color = colorResource(id = R.color.gray)
+            color = colorResource(id = R.color.graphite)
         )
         Text(
             text = stringResource(id = R.string.register_agreement_2),

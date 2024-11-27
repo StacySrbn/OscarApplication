@@ -15,13 +15,19 @@ import com.example.homelibrary.R
 import com.example.homelibrary.presentation.core.dashboard.DashboardScreen
 import com.example.homelibrary.presentation.core.dashboard.DashboardViewModel
 import com.example.homelibrary.presentation.navgraph.Screen
+import com.example.homelibrary.util.Constants.POPULAR_CATEGORY
+import com.example.homelibrary.util.Constants.UPCOMING_CATEGORY
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun CoreScreen(navController: NavHostController){
 
+    val bottomNavController = rememberNavController()
+
     val dashboardViewModel = hiltViewModel<DashboardViewModel>()
     val movieListState = dashboardViewModel.movieListState.collectAsState().value
-    val bottomNavController = rememberNavController()
+    val bannersState = dashboardViewModel.bannersState.collectAsState().value
 
     val popularMovieList = movieListState.popularMovieList.collectAsLazyPagingItems()
     val upcomingMovieList = movieListState.upcomingMovieList.collectAsLazyPagingItems()
@@ -47,12 +53,29 @@ fun CoreScreen(navController: NavHostController){
             ){
                 composable(Screen.DashboardScreen.route) {
 
+                    var isRefreshing by remember {
+                        mutableStateOf(false)
+                    }
+                    LaunchedEffect(isRefreshing) {
+                        if (isRefreshing) {
+                            dashboardViewModel.refreshData()
+                            delay(1000)
+                            isRefreshing = false
+                        }
+                    }
                     DashboardScreen(
                         navController = navController,
-                        banners = emptyList(),
+                        bannersState = bannersState,
                         movieListState = movieListState,
                         popularMovieList = popularMovieList,
-                        upcomingMovieList = upcomingMovieList
+                        upcomingMovieList = upcomingMovieList,
+                        isRefreshing = isRefreshing,
+                        onRefresh = {
+                            isRefreshing = true
+                        },
+                        onReloadBanners = { dashboardViewModel.reloadBanners() },
+                        onReloadPopular = { dashboardViewModel.reloadMovieList(POPULAR_CATEGORY) },
+                        onReloadUpcoming = { dashboardViewModel.reloadMovieList(UPCOMING_CATEGORY) }
                     )
                 }
                 composable(Screen.CategoryScreen.route) {

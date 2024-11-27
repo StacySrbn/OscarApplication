@@ -42,7 +42,7 @@ fun MovieCardViewHolder(
 
         Box(
             modifier = Modifier
-                .height(240.dp)
+                .height(250.dp)
                 .width(160.dp)
                 .clip(RoundedCornerShape(12.dp))
                 .padding(start = Dimens.MediumPadding, end = lastItemEndPadding)

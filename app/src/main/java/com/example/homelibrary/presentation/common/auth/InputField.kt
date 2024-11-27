@@ -13,7 +13,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
 import com.example.homelibrary.R
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun InputField(
     label: String,
@@ -35,18 +34,31 @@ fun InputField(
             label = {
                 Text(
                     text = hint,
-                    color = colorResource(id = R.color.gray)
+                    color = colorResource(id = R.color.graphite),
                 )
             },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 6.dp),
             shape = RoundedCornerShape(8.dp),
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                containerColor = colorResource(id = R.color.light_gray),
-                unfocusedBorderColor = Color.Gray,
-                focusedBorderColor = colorResource(id = R.color.graphite)
+            colors = TextFieldDefaults.colors(
+                unfocusedContainerColor = colorResource(id = R.color.light_gray),
+                focusedContainerColor = colorResource(id = R.color.light_gray)
+
             )
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun InputFieldPreview() {
+    MaterialTheme {
+        InputField(
+            label = "Email",
+            hint = "Enter your email",
+            fieldState = "",
+            onFieldChange = {}
         )
     }
 }

@@ -65,13 +65,6 @@ class MainActivity : ComponentActivity() {
             HomeLibraryTheme {
                 SetBarColor(color = MaterialTheme.colorScheme.inverseOnSurface)
 
-                /*val systemController = rememberSystemUiController()
-                SideEffect {
-                    systemController.setSystemBarsColor(
-                        color = Color.Transparent
-                    )
-                }*/
-
                 val startDestination = viewModel.startDestination.collectAsState().value
                 val navController = rememberNavController()
                 val signInViewModel: SignInViewModel = hiltViewModel()

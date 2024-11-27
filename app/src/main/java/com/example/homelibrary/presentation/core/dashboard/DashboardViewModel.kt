@@ -1,10 +1,10 @@
 package com.example.homelibrary.presentation.core.dashboard
 
+import android.util.Log
 import androidx.lifecycle.*
 import androidx.paging.*
-import androidx.paging.compose.collectAsLazyPagingItems
-import com.example.homelibrary.domain.repository.MovieListRepository
-import com.example.homelibrary.domain.use_cases.dashboard.GetAudiobookListUseCase
+import com.example.homelibrary.domain.use_cases.dashboard.GetBannersUseCase
+import com.example.homelibrary.domain.use_cases.dashboard.GetMovieListUseCase
 import com.example.homelibrary.util.Constants.POPULAR_CATEGORY
 import com.example.homelibrary.util.Constants.UPCOMING_CATEGORY
 import com.example.homelibrary.util.Resource
@@ -16,17 +16,72 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DashboardViewModel @Inject constructor(
-    private val getAudiobookListUseCase: GetAudiobookListUseCase
+    private val getMovieListUseCase: GetMovieListUseCase,
+    private val getBannersUseCase: GetBannersUseCase
 ): ViewModel() {
 
     private var _movieListState = MutableStateFlow(MovieListState())
     val movieListState = _movieListState.asStateFlow()
 
+    private var _bannersState = MutableStateFlow(BannersState())
+    val bannersState = _bannersState.asStateFlow()
 
 
     init {
+        getBanners()
         getMovieList(POPULAR_CATEGORY)
         getMovieList(UPCOMING_CATEGORY)
+    }
+
+    fun refreshData(){
+        viewModelScope.launch{
+            getBanners()
+            getMovieList(POPULAR_CATEGORY)
+            getMovieList(UPCOMING_CATEGORY)
+        }
+
+    }
+    fun reloadBanners() {
+        getBanners()
+    }
+    fun reloadMovieList(category: String) {
+        getMovieList(category)
+    }
+
+    private fun getBanners(){
+        viewModelScope.launch {
+            getBannersUseCase().collect { result->
+                when (result){
+                    is Resource.Loading -> {_bannersState.update {
+                        it.copy(isLoading = true)
+                    }
+                        Log.d("BannersState", "Loading state emitted: isLoading = true")
+                    }
+                    is Resource.Success -> {
+                        _bannersState.update {
+                            it.copy(
+                                bannersList = result.data ?: emptyList()
+                            )
+                        }
+                        Log.d("BannersState", "Success state emitted: bannersList = ${result.data}")
+
+                        delay(500)
+                        _bannersState.update {
+                            it.copy(isLoading = false)
+                        }
+                        Log.d("BannersState", "Loading state emitted: isLoading = false")
+                    }
+                    is Resource.Error -> {_bannersState.update {
+                        it.copy(
+                            isLoading = false,
+                            errorMessage = result.message ?: "Failed to fetch banners."
+                        )
+                    }
+                        Log.d("BannersState", "Error state emitted: errorMessage = ${result.message}")
+                    }
+                }
+            }
+        }
     }
 
     private fun getMovieList(category: String){
@@ -41,7 +96,7 @@ class DashboardViewModel @Inject constructor(
                     }
                 }
 
-                val moviesFlow = getAudiobookListUseCase(category)
+                val moviesFlow = getMovieListUseCase(category)
                     .cachedIn(viewModelScope)
 
 
@@ -72,7 +127,6 @@ class DashboardViewModel @Inject constructor(
                     }
                 }
             }
-
         }
     }
 }

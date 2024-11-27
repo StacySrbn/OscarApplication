@@ -48,8 +48,9 @@
     <string name="category_label">Category</string>
     <string name="favorite_label">Favorite</string>
     <string name="profile_label">Profile</string>
-
-
+    <string name="watch_now_label">Watch Now</string>
+    <string name="error_while_loading">Error while loading</string>
+    <string name="tap_to_try_again">Tap to try again</string>
 
 
 </resources>
