@@ -26,11 +26,6 @@ class MovieRemoteMediator(
                 LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
                 LoadType.APPEND -> {
                     currentPage++
-                    /*val lastPage = state.pages.lastOrNull()?.nextKey
-                    if (lastPage == null) {
-                        return MediatorResult.Success(endOfPaginationReached = true)
-                    }
-                    lastPage + 1*/
                 }
             }
             val movieList = movieApi.getMoviesList(

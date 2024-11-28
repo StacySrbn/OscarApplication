@@ -32,7 +32,6 @@ class MainViewModel @Inject constructor(
                         isAuthenticated -> Screen.CoreScreen
                         else -> Screen.SignInScreen
                     }
-
                     _isReady.value = true
                     println("App is ready: ${_isReady.value}")
                 }

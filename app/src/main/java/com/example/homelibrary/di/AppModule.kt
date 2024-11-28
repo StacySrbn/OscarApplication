@@ -6,6 +6,8 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.room.Room
+import com.example.homelibrary.connectivity_observer.AndroidConnectivityObserver
+import com.example.homelibrary.connectivity_observer.ConnectivityObserver
 import com.example.homelibrary.data.local_db.Converters
 import com.example.homelibrary.data.local_db.MovieDatabase
 import com.example.homelibrary.data.local_db.MovieEntity
@@ -31,6 +33,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import dagger.*
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -153,6 +156,5 @@ object AppModule {
         ).addTypeConverter(Converters(gson))
             .build()
     }
-
 
 }

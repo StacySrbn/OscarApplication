@@ -8,20 +8,29 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.homelibrary.R
+import com.example.homelibrary.connectivity_observer.ConnectivityViewModel
+import com.example.homelibrary.connectivity_observer.InternetConnectionPopup
 import com.example.homelibrary.presentation.core.dashboard.DashboardScreen
 import com.example.homelibrary.presentation.core.dashboard.DashboardViewModel
 import com.example.homelibrary.presentation.navgraph.Screen
 import com.example.homelibrary.util.Constants.POPULAR_CATEGORY
 import com.example.homelibrary.util.Constants.UPCOMING_CATEGORY
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 @Composable
 fun CoreScreen(navController: NavHostController){
+
+
+    val connectivityViewModel: ConnectivityViewModel = hiltViewModel()
+    val isConnected by connectivityViewModel.isConnected.collectAsStateWithLifecycle()
+    val showPopup by connectivityViewModel.showPopup.collectAsStateWithLifecycle()
+    println("CORE: showPopup: $showPopup | is connected: $isConnected")
+
 
     val bottomNavController = rememberNavController()
 
@@ -34,6 +43,14 @@ fun CoreScreen(navController: NavHostController){
 
     Log.d("MovieRemoteMediator", "popular list size ${popularMovieList.itemCount}")
     Log.d("MovieRemoteMediator", "upcoming list size ${upcomingMovieList.itemCount}")
+
+
+    if (showPopup) {
+        InternetConnectionPopup(
+            showPopup = true,
+            onDismiss = { connectivityViewModel.setPopupVisibility(false) }
+        )
+    }
 
     Scaffold(
         topBar = { null },

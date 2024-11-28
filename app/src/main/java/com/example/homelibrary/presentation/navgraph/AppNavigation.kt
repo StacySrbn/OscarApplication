@@ -108,7 +108,7 @@ fun AppNavigation(
                 navArgument(name = "movieId") {type = NavType.IntType}
             )
         ) { backStackEntry ->  
-            DetailsScreen(/*backStackEntry*/)
+            //DetailsScreen(/*backStackEntry*/)
         }
         composable(Screen.HelperScreen.route) {
             HelperScreen(

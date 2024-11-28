@@ -51,6 +51,9 @@
     <string name="watch_now_label">Watch Now</string>
     <string name="error_while_loading">Error while loading</string>
     <string name="tap_to_try_again">Tap to try again</string>
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="please_check_your_internet_connection">Please check your internet connection and try again.</string>
+    <string name="ok">OK</string>
 
 
 </resources>
