@@ -1,4 +1,4 @@
-package com.example.homelibrary.data.remote
+package com.example.homelibrary.data.remote.response.banners
 
 data class BannerDocument(
     val id: Int = 0,

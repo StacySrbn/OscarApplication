@@ -1,4 +1,4 @@
-package com.example.homelibrary.data.remote.response
+package com.example.homelibrary.data.remote.response.movie_list
 
 import com.google.gson.annotations.SerializedName
 

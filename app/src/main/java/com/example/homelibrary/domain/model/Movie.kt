@@ -3,12 +3,12 @@ package com.example.homelibrary.domain.model
 data class Movie(
     val adult: Boolean,
     val backdropPath: String,
-    val genreIds: List<Int>,
+    val genreIds: List<Int>, //TODO
     val id: Int,
     val originalLanguage: String,
     val originalTitle: String,
     val overview: String,
-    val popularity: Double,
+    val popularity: Double, //TODO
     val posterPath: String,
     val releaseDate: String,
     val title: String,

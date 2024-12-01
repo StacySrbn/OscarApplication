@@ -106,7 +106,7 @@ fun ShimmerMovieItem(
 @Composable
 fun ShimmerBannerItem(
     isLoading: Boolean,
-    contentAfterLoading: @Composable () -> Unit,
+    contentAfterLoading: @Composable () -> Unit
 ){
     if (isLoading) {
         Box(

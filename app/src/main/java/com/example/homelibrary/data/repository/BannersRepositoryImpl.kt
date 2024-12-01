@@ -1,7 +1,7 @@
 package com.example.homelibrary.data.repository
 
 import com.example.homelibrary.data.mappers.toBanner
-import com.example.homelibrary.data.remote.BannerDocument
+import com.example.homelibrary.data.remote.response.banners.BannerDocument
 import com.example.homelibrary.domain.model.Banner
 import com.example.homelibrary.domain.repository.BannersRepository
 import com.example.homelibrary.util.Resource

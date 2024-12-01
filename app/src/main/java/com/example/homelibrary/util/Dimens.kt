@@ -11,6 +11,7 @@ object Dimens {
     val ExtraSmallPadding = 8.dp
 
     val AHundred = 100.dp
+    val PosterSize = 400.dp
 
     val UnselectedIndicatorSize = 8.dp
     val SelectedIndicatorSize = 11.dp

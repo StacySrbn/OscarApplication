@@ -2,9 +2,11 @@ package com.example.homelibrary.di
 
 import com.example.homelibrary.data.repository.AuthRepositoryImpl
 import com.example.homelibrary.data.repository.BannersRepositoryImpl
+import com.example.homelibrary.data.repository.DetailsRepositoryImpl
 import com.example.homelibrary.data.repository.MovieListRepositoryImpl
 import com.example.homelibrary.domain.repository.AuthRepository
 import com.example.homelibrary.domain.repository.BannersRepository
+import com.example.homelibrary.domain.repository.DetailsRepository
 import com.example.homelibrary.domain.repository.MovieListRepository
 import dagger.*
 import dagger.hilt.InstallIn
@@ -32,6 +34,14 @@ abstract class RepositoryModule {
     abstract fun bindBannerRepository(
         bannersRepositoryImpl: BannersRepositoryImpl
     ) : BannersRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindGenreRepository(
+        detailsRepositoryImpl: DetailsRepositoryImpl
+    ) : DetailsRepository
+
+
 
 
 }

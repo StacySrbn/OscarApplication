@@ -12,6 +12,7 @@ import androidx.navigation.navArgument
 import com.example.homelibrary.presentation.profile.HelperScreen
 import com.example.homelibrary.presentation.core.CoreScreen
 import com.example.homelibrary.presentation.details.DetailsScreen
+import com.example.homelibrary.presentation.details.DetailsViewModel
 import com.example.homelibrary.presentation.onboarding.OnBoardingEvent
 import com.example.homelibrary.presentation.onboarding.OnBoardingScreen
 import com.example.homelibrary.presentation.onboarding.OnBoardingViewModel
@@ -107,8 +108,13 @@ fun AppNavigation(
             arguments = listOf(
                 navArgument(name = "movieId") {type = NavType.IntType}
             )
-        ) { backStackEntry ->  
-            //DetailsScreen(/*backStackEntry*/)
+        ) {
+            val detailsViewModel = hiltViewModel<DetailsViewModel>()
+            val detailsState = detailsViewModel.detailsState.collectAsState().value
+            val genreState = detailsViewModel.genreState.collectAsState().value
+            val trailerState = detailsViewModel.trailerState.collectAsState().value
+
+            DetailsScreen(detailsState = detailsState, navController = navController, genreState = genreState, trailerState = trailerState)
         }
         composable(Screen.HelperScreen.route) {
             HelperScreen(

@@ -4,6 +4,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -17,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.homelibrary.R
 import com.example.homelibrary.util.Dimens.ExtraSmallPadding
+import com.example.homelibrary.util.Dimens.MediumPadding
 import com.example.homelibrary.util.Dimens.SmallPadding
 
 @Composable
@@ -24,15 +28,20 @@ fun TopBar(){
         Row (
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = SmallPadding)
+                .padding(horizontal = MediumPadding)
                 .height(60.dp),
             verticalAlignment = Alignment.Bottom,
             horizontalArrangement = Arrangement.SpaceBetween
         ){
-            Box(modifier = Modifier.padding(ExtraSmallPadding)){
-                Image(
+            IconButton(
+                onClick = { /* Add click logic here */ },
+                modifier = Modifier.size(35.dp)
+            ) {
+                Icon(
                     imageVector = Icons.Rounded.Search,
-                    contentDescription = null
+                    contentDescription = "Search",
+                    modifier = Modifier.size(35.dp),
+                    tint = Color.Black
                 )
             }
 
@@ -45,14 +54,15 @@ fun TopBar(){
                 )
             }
 
-
-
-            Box(modifier = Modifier.padding(ExtraSmallPadding)){
-                Image(
+            IconButton(
+                onClick = { /* Add click logic here */ },
+                modifier = Modifier.size(35.dp)
+            ) {
+                Icon(
                     painter = painterResource(id = R.drawable.notification),
-                    contentDescription = null,
-                    modifier = Modifier.size(24.dp)
-                    
+                    contentDescription = "Notification",
+                    modifier = Modifier.size(35.dp),
+                    tint = Color.Black
                 )
             }
 

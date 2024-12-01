@@ -1,7 +1,7 @@
 package com.example.homelibrary.data.mappers
 
 import com.example.homelibrary.data.local_db.MovieEntity
-import com.example.homelibrary.data.remote.response.MovieDto
+import com.example.homelibrary.data.remote.response.movie_list.MovieDto
 import com.example.homelibrary.domain.model.Movie
 
 

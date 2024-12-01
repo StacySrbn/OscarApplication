@@ -96,25 +96,30 @@ fun MovieCardViewHolder(
 
                 Row(
                     modifier = Modifier
-                        .wrapContentWidth()
-                        .padding(bottom = 12.dp),
+                        .wrapContentWidth(),
                     horizontalArrangement = Arrangement.Start,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     RatingBar(
-                        starsModifier = Modifier.size(14.dp),
+                        starsModifier = Modifier
+                            .size(14.dp)
+                            .align(Alignment.CenterVertically),
                         rating = movie.voteAverage / 2,
-                        starsColor = colorResource(id = R.color.golden)
+                        starsColor = colorResource(id = R.color.hot_orange)
                     )
                     Text(
-                        modifier = Modifier.padding(start = 4.dp),
+                        modifier = Modifier
+                            .padding(start = 4.dp)
+                            .align(Alignment.CenterVertically),
                         text = movie.voteAverage.toString().take(3),
                         color = colorResource(id = R.color.teal_main),
                         fontSize = 12.sp,
-                        fontWeight = FontWeight.Medium,
+                        fontWeight = FontWeight.SemiBold,
                         maxLines = 1
                     )
                 }
+                Spacer(modifier = Modifier.height(12.dp))
+
             }
         }
 }

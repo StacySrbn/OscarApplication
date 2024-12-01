@@ -100,6 +100,8 @@ dependencies {
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.31.4-beta")
     implementation("com.google.accompanist:accompanist-pager:0.30.1")
     implementation("com.google.accompanist:accompanist-swiperefresh:0.31.4-beta")
+    implementation("com.google.accompanist:accompanist-flowlayout:0.30.1")
+
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -112,6 +114,9 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+
+    //implementation("com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.28")
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0")
 
     implementation("androidx.media3:media3-exoplayer:1.4.1")
     implementation("androidx.media3:media3-ui:1.4.1")

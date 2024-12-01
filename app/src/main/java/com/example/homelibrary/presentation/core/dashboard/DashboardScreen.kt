@@ -19,6 +19,7 @@ import com.example.homelibrary.presentation.common.MovieRowSlider
 import com.example.homelibrary.presentation.core.dashboard.components.BannersCarousel
 import com.example.homelibrary.presentation.core.dashboard.components.TopBar
 import com.example.homelibrary.util.Dimens.BigPadding
+import com.example.homelibrary.util.Dimens.MediumPadding
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 
@@ -54,7 +55,7 @@ fun DashboardScreen(
 
             item {
                 TopBar()
-                Spacer(modifier = Modifier.height(SmallPadding))
+                Spacer(modifier = Modifier.height(MediumPadding))
             }
 
             item {
