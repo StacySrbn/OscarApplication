@@ -3,6 +3,9 @@ package com.example.homelibrary.presentation.core.dashboard
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
+import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -12,7 +15,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.paging.compose.LazyPagingItems
 import com.example.homelibrary.R
+import com.example.homelibrary.domain.model.Actor
 import com.example.homelibrary.domain.model.Movie
+import com.example.homelibrary.presentation.common.ActorsSlider
 import com.example.homelibrary.presentation.common.ErrorLoadingSign
 import com.example.homelibrary.util.Dimens.SmallPadding
 import com.example.homelibrary.presentation.common.MovieRowSlider
@@ -23,13 +28,16 @@ import com.example.homelibrary.util.Dimens.MediumPadding
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DashboardScreen(
     movieListState: MovieListState,
     bannersState: BannersState,
+    actorListState: ActorListState,
     navController: NavHostController,
     popularMovieList: LazyPagingItems<Movie>,
     upcomingMovieList: LazyPagingItems<Movie>,
+    actorList: LazyPagingItems<Actor>,
 
     isRefreshing: Boolean,
     onRefresh: () -> Unit,
@@ -38,14 +46,12 @@ fun DashboardScreen(
     onReloadPopular: () -> Unit,
     onReloadUpcoming: () -> Unit
 ) {
-    val swipeRefreshState = rememberSwipeRefreshState(
-        isRefreshing = isRefreshing
-    )
+    val state = rememberPullToRefreshState()
 
-
-    SwipeRefresh(
-        state = swipeRefreshState,
-        onRefresh = onRefresh
+    PullToRefreshBox(
+        isRefreshing = isRefreshing,
+        onRefresh = onRefresh,
+        state = state
     ) {
         LazyColumn(
             modifier = Modifier
@@ -75,7 +81,8 @@ fun DashboardScreen(
                     BannersCarousel(
                         banners = banners,
                         isLoading = isLoading,
-                        navHostController = navController
+                        navHostController = navController,
+                        isRefreshing = isRefreshing
                     )
                 }
                 Spacer(modifier = Modifier.height(27.dp))
@@ -104,7 +111,19 @@ fun DashboardScreen(
                 }
                 Spacer(modifier = Modifier.height(BigPadding))
             }
-
+//ACTORS
+            item {
+                val isLoading = actorListState.isLoading
+                val label = stringResource(id = R.string.actors_label)
+                ActorsSlider(
+                    label = label,
+                    actorList = actorList,
+                    isLoading = isLoading,
+                    navHostController = navController
+                )
+                Spacer(modifier = Modifier.height(BigPadding))
+            }
+//ACTORS
             item {
                 if (movieListState.errorMessageUpcoming != null) {
                     ErrorLoadingSign(
@@ -128,6 +147,8 @@ fun DashboardScreen(
                 }
                 Spacer(modifier = Modifier.height(BigPadding))
             }
+
+
         }
 
     }

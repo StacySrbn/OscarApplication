@@ -35,6 +35,14 @@ class DetailsViewModel @Inject constructor(
         loadMovieTrailer(movieId ?: -1)
     }
 
+    fun refreshData() {
+        viewModelScope.launch {
+            getMovie(movieId ?: -1)
+            loadGenres()
+            loadMovieTrailer(movieId ?: -1)
+        }
+    }
+
     private fun getMovie(id: Int) {
         viewModelScope.launch {
             _detailsState.update {

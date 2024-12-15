@@ -2,38 +2,22 @@ package com.example.homelibrary.di
 
 import android.app.Application
 import android.content.Context
-import androidx.paging.ExperimentalPagingApi
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
 import androidx.room.Room
-import com.example.homelibrary.connectivity_observer.AndroidConnectivityObserver
-import com.example.homelibrary.connectivity_observer.ConnectivityObserver
-import com.example.homelibrary.data.local_db.Converters
-import com.example.homelibrary.data.local_db.MovieDatabase
-import com.example.homelibrary.data.local_db.MovieEntity
-import com.example.homelibrary.data.local_db.MovieRemoteMediator
+import com.example.homelibrary.data.local_db.*
 import com.example.homelibrary.domain.manager.LocalUserManager
-import com.example.homelibrary.domain.use_cases.app_entry.AppEntryUseCases
-import com.example.homelibrary.domain.use_cases.app_entry.ReadAppEntry
-import com.example.homelibrary.domain.use_cases.app_entry.SaveAppEntry
+import com.example.homelibrary.domain.use_cases.app_entry.*
 import com.example.homelibrary.data.manager.LocalUserManagerImpl
 import com.example.homelibrary.data.remote.MovieApi
-import com.example.homelibrary.domain.repository.AuthRepository
-import com.example.homelibrary.domain.repository.BannersRepository
-import com.example.homelibrary.domain.repository.MovieListRepository
-import com.example.homelibrary.domain.use_cases.auth.SignInUseCase
-import com.example.homelibrary.domain.use_cases.auth.SignUpUseCase
-import com.example.homelibrary.domain.use_cases.dashboard.GetBannersUseCase
-import com.example.homelibrary.domain.use_cases.dashboard.GetMovieListUseCase
+import com.example.homelibrary.domain.repository.*
+import com.example.homelibrary.domain.use_cases.auth.*
+import com.example.homelibrary.domain.use_cases.dashboard.*
 import com.example.homelibrary.presentation.signin.google.GoogleAuthUiClient
-import com.google.android.gms.auth.api.identity.Identity
-import com.google.android.gms.auth.api.identity.SignInClient
+import com.google.android.gms.auth.api.identity.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import dagger.*
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -41,7 +25,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-@OptIn(ExperimentalPagingApi::class)
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
@@ -121,6 +104,13 @@ object AppModule {
         movieListRepository: MovieListRepository
     ) : GetMovieListUseCase = GetMovieListUseCase(movieListRepository)
 
+    @Provides
+    @Singleton
+    fun provideGetActorListUseCase(
+        actorRepository: ActorRepository
+    ) : GetActorListUseCase = GetActorListUseCase(actorRepository)
+
+
 
     private val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
@@ -152,8 +142,9 @@ object AppModule {
         return Room.databaseBuilder(
             app,
             MovieDatabase::class.java,
-            "moviedb.db"
+            "movie_db"
         ).addTypeConverter(Converters(gson))
+            .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
             .build()
     }
 

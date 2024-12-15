@@ -37,7 +37,7 @@ fun MovieCardViewHolder(
         .size(Size.ORIGINAL)
         .build()
 
-    val imageState = rememberAsyncImagePainter(model = imageRequest).state
+    val painter = rememberAsyncImagePainter(model = imageRequest)
 
 
         Box(
@@ -52,8 +52,7 @@ fun MovieCardViewHolder(
             contentAlignment = Alignment.Center
         ) {
             Column {
-
-                if (imageState is AsyncImagePainter.State.Error) {
+                if (painter.state is AsyncImagePainter.State.Error) {
                     Box(
                         modifier = Modifier
                             .height(184.dp)
@@ -69,13 +68,13 @@ fun MovieCardViewHolder(
                         )
                     }
                 }
-                if (imageState is AsyncImagePainter.State.Success) {
+                if (painter.state is AsyncImagePainter.State.Success) {
                     Image(
                         modifier = Modifier
                             .height(184.dp)
                             .width(130.dp)
                             .clip(RoundedCornerShape(12.dp)),
-                        painter = imageState.painter,
+                        painter = painter,
                         contentScale = ContentScale.Crop,
                         contentDescription = movie.title
                     )

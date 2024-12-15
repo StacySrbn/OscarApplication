@@ -30,6 +30,7 @@ import com.example.homelibrary.util.Dimens.SmallPadding
 fun BannersCarousel(
     banners: List<Banner>,
     isLoading: Boolean,
+    isRefreshing: Boolean,
     navHostController: NavHostController
 ) {
 
@@ -37,6 +38,11 @@ fun BannersCarousel(
         initialPage = 0,
         pageCount = { banners.size }
     )
+
+
+    LaunchedEffect(isRefreshing) {
+        pagerState.scrollToPage(0)
+    }
 
     Column (
         verticalArrangement = Arrangement.Center,

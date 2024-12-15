@@ -20,6 +20,8 @@ import com.example.homelibrary.presentation.signin.SignInScreen
 import com.example.homelibrary.presentation.signin.SignInViewModel
 import com.example.homelibrary.presentation.signup.SignUpScreen
 import com.example.homelibrary.presentation.signup.SignUpViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun AppNavigation(
@@ -114,7 +116,27 @@ fun AppNavigation(
             val genreState = detailsViewModel.genreState.collectAsState().value
             val trailerState = detailsViewModel.trailerState.collectAsState().value
 
-            DetailsScreen(detailsState = detailsState, navController = navController, genreState = genreState, trailerState = trailerState)
+            var isRefreshing by remember {
+                mutableStateOf(false)
+            }
+            LaunchedEffect(isRefreshing) {
+                if (isRefreshing) {
+                    detailsViewModel.refreshData()
+                    delay(1000)
+                    isRefreshing = false
+                }
+            }
+
+            DetailsScreen(
+                detailsState = detailsState,
+                navController = navController,
+                genreState = genreState,
+                trailerState = trailerState,
+                isRefreshing = isRefreshing,
+                onRefresh = {
+                    isRefreshing=true
+                }
+            )
         }
         composable(Screen.HelperScreen.route) {
             HelperScreen(

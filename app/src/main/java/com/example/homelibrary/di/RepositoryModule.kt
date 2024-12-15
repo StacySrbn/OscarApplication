@@ -1,9 +1,11 @@
 package com.example.homelibrary.di
 
+import com.example.homelibrary.data.repository.ActorRepositoryImpl
 import com.example.homelibrary.data.repository.AuthRepositoryImpl
 import com.example.homelibrary.data.repository.BannersRepositoryImpl
 import com.example.homelibrary.data.repository.DetailsRepositoryImpl
 import com.example.homelibrary.data.repository.MovieListRepositoryImpl
+import com.example.homelibrary.domain.repository.ActorRepository
 import com.example.homelibrary.domain.repository.AuthRepository
 import com.example.homelibrary.domain.repository.BannersRepository
 import com.example.homelibrary.domain.repository.DetailsRepository
@@ -41,7 +43,11 @@ abstract class RepositoryModule {
         detailsRepositoryImpl: DetailsRepositoryImpl
     ) : DetailsRepository
 
-
+    @Binds
+    @Singleton
+    abstract fun bindActorRepository(
+        actorRepositoryImpl: ActorRepositoryImpl
+    ) : ActorRepository
 
 
 }

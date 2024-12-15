@@ -50,7 +50,7 @@ fun TrailerSection(
                 isLoading = isLoadingTrailer
             )
         }
-        if (trailerId==null || trailerState.errorMessage!=null){
+        if (trailerId==null){
             Box (
                 modifier = Modifier
                     .height(220.dp)

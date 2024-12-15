@@ -37,9 +37,11 @@ fun CoreScreen(navController: NavHostController){
     val dashboardViewModel = hiltViewModel<DashboardViewModel>()
     val movieListState = dashboardViewModel.movieListState.collectAsState().value
     val bannersState = dashboardViewModel.bannersState.collectAsState().value
+    val actorListState = dashboardViewModel.actorListState.collectAsState().value
 
     val popularMovieList = movieListState.popularMovieList.collectAsLazyPagingItems()
     val upcomingMovieList = movieListState.upcomingMovieList.collectAsLazyPagingItems()
+    val actorList = actorListState.actorList.collectAsLazyPagingItems()
 
     Log.d("MovieRemoteMediator", "popular list size ${popularMovieList.itemCount}")
     Log.d("MovieRemoteMediator", "upcoming list size ${upcomingMovieList.itemCount}")
@@ -92,7 +94,9 @@ fun CoreScreen(navController: NavHostController){
                         },
                         onReloadBanners = { dashboardViewModel.reloadBanners() },
                         onReloadPopular = { dashboardViewModel.reloadMovieList(POPULAR_CATEGORY) },
-                        onReloadUpcoming = { dashboardViewModel.reloadMovieList(UPCOMING_CATEGORY) }
+                        onReloadUpcoming = { dashboardViewModel.reloadMovieList(UPCOMING_CATEGORY) },
+                        actorListState = actorListState,
+                        actorList = actorList
                     )
                 }
                 composable(Screen.CategoryScreen.route) {

@@ -129,4 +129,6 @@ dependencies {
     implementation ("androidx.paging:paging-runtime-ktx:3.3.4")
     implementation ("androidx.paging:paging-compose:3.3.4")
 
+    implementation ("androidx.compose.foundation:foundation:1.7.5")
+
 }

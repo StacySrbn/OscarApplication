@@ -10,7 +10,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.homelibrary.R
 import com.example.homelibrary.presentation.details.DetailsState
-import com.example.homelibrary.util.Dimens
 import com.example.homelibrary.util.Dimens.SmallPadding
 
 @Composable

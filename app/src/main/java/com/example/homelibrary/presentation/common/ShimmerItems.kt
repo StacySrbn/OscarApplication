@@ -2,8 +2,8 @@ package com.example.homelibrary.presentation.common
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -14,7 +14,8 @@ import androidx.compose.ui.graphics.*
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
-import com.example.homelibrary.util.Dimens
+import com.example.homelibrary.util.Dimens.AHundred
+import com.example.homelibrary.util.Dimens.ExtraSmallPadding
 import com.example.homelibrary.util.Dimens.MediumPadding
 
 fun Modifier.shimmerEffect(): Modifier = composed {
@@ -48,8 +49,7 @@ fun Modifier.shimmerEffect(): Modifier = composed {
 @Composable
 fun ShimmerMovieItem(
     isLoading: Boolean,
-    contentAfterLoading: @Composable () -> Unit,
-    lastItemEndPadding: Dp
+    contentAfterLoading: @Composable () -> Unit
 ){
     if (isLoading) {
         Box(
@@ -57,7 +57,7 @@ fun ShimmerMovieItem(
                 .height(250.dp)
                 .width(160.dp)
                 .clip(RoundedCornerShape(12.dp))
-                .padding(start = MediumPadding, end = lastItemEndPadding),
+                .padding(start = MediumPadding),
             contentAlignment = Alignment.Center
         ) {
             Column() {
@@ -68,7 +68,7 @@ fun ShimmerMovieItem(
                         .clip(RoundedCornerShape(12.dp))
                         .shimmerEffect()
                 )
-                Spacer(modifier = Modifier.height(Dimens.ExtraSmallPadding))
+                Spacer(modifier = Modifier.height(ExtraSmallPadding))
                 Box(
                     modifier = Modifier
                         .height(14.dp)
@@ -104,6 +104,54 @@ fun ShimmerMovieItem(
 }
 
 @Composable
+fun ShimmerActorItem(
+    isLoading: Boolean,
+    contentAfterLoading: @Composable () -> Unit
+){
+    if (isLoading) {
+        Box(
+            modifier = Modifier
+                .height(152.dp)
+                .width(101.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .padding(start = MediumPadding),
+            contentAlignment = Alignment.TopStart
+        ) {
+            Column(
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(AHundred)
+                        .fillMaxWidth()
+                        .padding(start = MediumPadding)
+                        .clip(CircleShape)
+                        .background(Color.Gray)
+                        .shimmerEffect()
+                )
+                Spacer(modifier = Modifier.height(ExtraSmallPadding))
+                Box(
+                    modifier = Modifier
+                        .height(20.dp)
+                        .width(AHundred)
+                        .clip(RoundedCornerShape(6.dp))
+                        .shimmerEffect()
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Box(
+                    modifier = Modifier
+                        .height(20.dp)
+                        .width(50.dp)
+                        .clip(RoundedCornerShape(6.dp))
+                        .shimmerEffect(),
+                )
+            }
+        }
+    } else {
+        contentAfterLoading()
+    }
+}
+
+@Composable
 fun ShimmerBannerItem(
     isLoading: Boolean,
     contentAfterLoading: @Composable () -> Unit
@@ -128,7 +176,6 @@ fun ShimmerBannerItem(
 fun PreviewMovieItemShimmerEffect() {
     ShimmerMovieItem(
         isLoading = true,
-        lastItemEndPadding = 0.dp,
         contentAfterLoading = {
             Box(
                 modifier = Modifier

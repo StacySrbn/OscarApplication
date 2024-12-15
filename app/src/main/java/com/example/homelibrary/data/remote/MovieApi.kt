@@ -1,5 +1,6 @@
 package com.example.homelibrary.data.remote
 
+import com.example.homelibrary.data.remote.response.actors.ActorsListDto
 import com.example.homelibrary.data.remote.response.credits.MovieCreditsDto
 import com.example.homelibrary.data.remote.response.genres.GenreListDto
 import com.example.homelibrary.data.remote.response.movie_list.MovieListDto
@@ -30,8 +31,8 @@ interface MovieApi {
     @GET("movie/{movie_id}/similar")
     suspend fun getSimilarMovies(
         @Path("movie_id") movieId: Int,
-        @Query("api_key") apiKey: String = API_KEY,
-        @Query("page") page: Int = 1
+        @Query("page") page: Int = 1,
+        @Query("api_key") apiKey: String = API_KEY
     ): SimilarMoviesListDto
 
     @GET("movie/{movie_id}/credits")
@@ -42,13 +43,14 @@ interface MovieApi {
 
     @GET("person/popular")
     suspend fun getPopularActors(
-        @Query("api_key") apiKey: String
-    )
+        @Query("page") page: Int,
+        @Query("api_key") apiKey: String = API_KEY
+    ) : ActorsListDto
 
     @GET("search/multi")
     suspend fun search(
-        @Query("api_key") apiKey: String = API_KEY,
         @Query("query") query: String,
+        @Query("api_key") apiKey: String = API_KEY,
         @Query("page") page: Int = 1,
         @Query("include_adult") includeAdult: Boolean = false
     )

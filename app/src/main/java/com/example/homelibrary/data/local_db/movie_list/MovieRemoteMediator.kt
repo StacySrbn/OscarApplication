@@ -1,8 +1,9 @@
-package com.example.homelibrary.data.local_db
+package com.example.homelibrary.data.local_db.movie_list
 
 import android.util.Log
 import androidx.paging.*
 import androidx.room.withTransaction
+import com.example.homelibrary.data.local_db.MovieDatabase
 import com.example.homelibrary.data.mappers.toMovieEntity
 import com.example.homelibrary.data.remote.MovieApi
 import okio.IOException
@@ -10,7 +11,7 @@ import retrofit2.HttpException
 
 @OptIn(ExperimentalPagingApi::class)
 class MovieRemoteMediator(
-    private val movieDB: MovieDatabase,
+    private val movieDb: MovieDatabase,
     private val movieApi: MovieApi,
     private val category: String
 ): RemoteMediator<Int, MovieEntity>(){
@@ -36,14 +37,14 @@ class MovieRemoteMediator(
             Log.d("MovieRemoteMediator", "Total Results: $category , ${movieList.totalResults}, Total Pages: ${movieList.totalPages}")
             Log.d("MovieRemoteMediator", "${category} Page: ${movieList.page}, List Size: ${movieList.results.size}")
 
-            movieDB.withTransaction {
+            movieDb.withTransaction {
                 if (loadType == LoadType.REFRESH){
-                    movieDB.movieDao.clearMoviesByCategory(category)
+                    movieDb.movieDao.clearMoviesByCategory(category)
                 }
                 val movieEntities = movieList.results.map { movie->
                     movie.toMovieEntity(category)
                 }
-                movieDB.movieDao.upsertMovieList(movieEntities)
+                movieDb.movieDao.upsertMovieList(movieEntities)
             }
 
             MediatorResult.Success(

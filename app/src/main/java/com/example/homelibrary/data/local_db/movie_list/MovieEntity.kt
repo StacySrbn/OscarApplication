@@ -1,9 +1,9 @@
-package com.example.homelibrary.data.local_db
+package com.example.homelibrary.data.local_db.movie_list
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "moviedb.db")
+@Entity(tableName = "movie")
 data class MovieEntity(
     @PrimaryKey
     val id: Int,

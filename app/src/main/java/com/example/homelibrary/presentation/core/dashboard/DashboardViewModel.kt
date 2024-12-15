@@ -3,6 +3,7 @@ package com.example.homelibrary.presentation.core.dashboard
 import android.util.Log
 import androidx.lifecycle.*
 import androidx.paging.*
+import com.example.homelibrary.domain.use_cases.dashboard.GetActorListUseCase
 import com.example.homelibrary.domain.use_cases.dashboard.GetBannersUseCase
 import com.example.homelibrary.domain.use_cases.dashboard.GetMovieListUseCase
 import com.example.homelibrary.util.Constants.POPULAR_CATEGORY
@@ -17,7 +18,8 @@ import javax.inject.Inject
 @HiltViewModel
 class DashboardViewModel @Inject constructor(
     private val getMovieListUseCase: GetMovieListUseCase,
-    private val getBannersUseCase: GetBannersUseCase
+    private val getBannersUseCase: GetBannersUseCase,
+    private val getActorListUseCase: GetActorListUseCase
 ): ViewModel() {
 
     private var _movieListState = MutableStateFlow(MovieListState())
@@ -25,6 +27,9 @@ class DashboardViewModel @Inject constructor(
 
     private var _bannersState = MutableStateFlow(BannersState())
     val bannersState = _bannersState.asStateFlow()
+
+    private var _actorListState = MutableStateFlow(ActorListState())
+    val actorListState = _actorListState.asStateFlow()
 
 
     init {
@@ -38,6 +43,7 @@ class DashboardViewModel @Inject constructor(
             getBanners()
             getMovieList(POPULAR_CATEGORY)
             getMovieList(UPCOMING_CATEGORY)
+            getActorList()
         }
 
     }
@@ -47,6 +53,7 @@ class DashboardViewModel @Inject constructor(
     fun reloadMovieList(category: String) {
         getMovieList(category)
     }
+
 
     private fun getBanners(){
         viewModelScope.launch {
@@ -107,7 +114,6 @@ class DashboardViewModel @Inject constructor(
                         else -> state
                     }
                 }
-                delay(50)
 
             } catch (e: Exception) {
                 _movieListState.update { state ->
@@ -125,6 +131,32 @@ class DashboardViewModel @Inject constructor(
                         UPCOMING_CATEGORY -> state.copy(isLoadingUpcoming = false)
                         else -> state
                     }
+                }
+            }
+        }
+    }
+
+    private fun getActorList(){
+        viewModelScope.launch {
+            try {
+                _actorListState.update {
+                    it.copy(isLoading = true)
+                }
+                val actorsFlow = getActorListUseCase().cachedIn(viewModelScope)
+                _actorListState.update {
+                    it.copy(actorList = actorsFlow)
+                }
+            } catch (e: Exception) {
+                _movieListState.update {
+                    it.copy(
+                        isLoadingPopular = false,
+                        errorMessagePopular = e.message ?: "An unexpected error occurred."
+                    )
+                }
+            } finally {
+                delay(3000)
+                _movieListState.update {
+                    it.copy(isLoadingUpcoming = false)
                 }
             }
         }
